@@ -1,0 +1,9 @@
+#!/bin/bash
+
+git add .
+
+git status
+
+git commit -m "x"
+
+git push
