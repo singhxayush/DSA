@@ -22,6 +22,7 @@ void inorder(Node root)
         inorder(root->left);
         cout<<root->key<<" ";
         inorder(root->right);
+        
     }
 }
 
