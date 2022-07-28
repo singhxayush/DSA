@@ -18,7 +18,8 @@
             2     3
            / \     \
           4   5     6
-
+                   /
+                  7
 
 */
 #include<iostream>
@@ -28,7 +29,6 @@ using namespace std;
 int main()
 {
     Node root = new node(1);
-    
 
     root->left = new node(2);
     root->right = new node(3);
@@ -38,7 +38,11 @@ int main()
 
     root->right->right = new node(6);
 
+    root->right->right->left = new node(7);
+
     preorder(root); cout<<endl;
     inorder(root); cout<<endl;
     postorder(root); cout<<endl;
+
+    cout<<"Height of tree : "<<height(root)<<"\n";
 }
