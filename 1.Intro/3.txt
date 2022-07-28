@@ -1,0 +1,25 @@
+types of data structures
+    1. physical data structures
+    2. logical data structures
+
+
+Physical data structures
+1. array - memory goes into stack by default but can also be created inside Heap
+2. linked list - memory only goes into heap -> but since head is a pointer, it may go into stack(head only)
+
+Logical data structures
+
+1. stack      - lifo   |
+2. queues     - fifo   |_ linear ds
+
+3. trees      -        |
+4. graph      -        |_ non linear ds
+
+5. hash table -        |_ tabular
+
+
+
+diff bet physical and logical ds
+physical ds are more like container where as logical ds are like operations you can perform on phy data to manipulate them
+
+IMPORTANT : ANY OF THE ABOVE GIVEN LOGICAL DATA STRUCTURES ARE MOSTLY IMPLEMENTED USING ARRAY OR LINKED LIST or combo of both

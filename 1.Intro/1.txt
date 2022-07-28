@@ -1,0 +1,10 @@
+DATA STRUCTURE - "Arrangement" of collection of data items so that operation on them can be done efficiently. Inside the main memory!!!
+
+
+example opening ms word: clicking the icon -> MS word program will be brought into the main memory -> CPU will start executing the program
+now when we access some data -> it also comes into the main memroy -> now all this data should be efficiently organised
+
+***So data structures are formed into the main memroy during the exexution time of a program***
+
+
+large scale old datas of giant companies are stored in data ware house. they can be accessed using using algorithms known as data mining algorithms.

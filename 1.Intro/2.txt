@@ -1,0 +1,27 @@
+STATIC VS DYNAMIC MEMORY ALLOCATION
+
+1 - about main program
+2 - how a program use memory
+3 - STATIC ALLOCATION
+4 - DYNAMIC ALLOCATION
+
+    -memory is divided into smaller addressable unit called bytes
+    -every byte is having its unique address
+    
+    -lets assume entire memory of the system is 64 kb (i.e. 0 - 65535)-> CALL IT AS A SEGMENT OF A MEMORY
+    
+
+HOW PROGRAM USES MAIN memroy
+    1. we will take one segment of the memroy we will be studying it
+    2. entire main memory is divided into three sections and used by a program
+    3. code section, stack and heap.
+        - area that is occupied in the main memory by the program is called code section of the program
+        - when you declare any variable or create a data variable, its memory resides inside stack, this is basically called static memory allocation(decided at the compile time)
+        - basically anything done at compile time or before run time is static
+
+
+DYNAMIC MEMORY ALLOCATION
+    - Utilization of heap memory - unorganized memory
+    - Heap memory should be treated as a resource
+    - important practice - when required allocate the memory other wise delete the memory
+    - program cant directly heap memory -> can only be done using pointer
