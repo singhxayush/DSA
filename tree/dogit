@@ -1,9 +1,12 @@
 #!/bin/bash
 
+#Enter a name for file
+read -p "Enter a messge : " message
+
 git add .
 
 git status
 
-git commit -m "x"
+git commit -m messge
 
 git push
