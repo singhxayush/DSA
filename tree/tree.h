@@ -54,3 +54,26 @@ int height(Node root)
     if(root == NULL) return 0;
     else return max(height(root->left), height(root->right))+1;
 }
+
+void node_at_distance_(int k, Node root)
+{
+    if(root != NULL)
+    {
+        if(k==0) cout<<root->key<<" ";
+        else
+        {
+            node_at_distance_(k-1, root->left);
+            node_at_distance_(k-1, root->right);
+        }
+    }
+}
+
+//Breadth First search - Level order traversal
+void levelorder_naive(Node root)
+{
+    int h = height(root);
+    for(int i=1; i<=h; i++)
+    {
+        node_at_distance_(i-1, root);
+    }
+}

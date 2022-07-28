@@ -18,8 +18,10 @@
             2     3
            / \     \
           4   5     6
-                   /
-                  7
+           \       / \
+            9     7   8
+           /
+          10
 
 */
 #include<iostream>
@@ -35,14 +37,24 @@ int main()
 
     root->left->left = new node(4);
     root->left->right = new node(5);
-
     root->right->right = new node(6);
 
     root->right->right->left = new node(7);
+    root->right->right->right = new node(8);
+    root->left->left->right = new node(9);
 
-    preorder(root); cout<<endl;
-    inorder(root); cout<<endl;
-    postorder(root); cout<<endl;
+    root->left->left->right->left = new node(10);
+    
 
-    cout<<"Height of tree : "<<height(root)<<"\n";
+    // preorder(root); cout<<endl;
+    // inorder(root); cout<<endl;
+    // postorder(root); cout<<endl;
+
+    // cout<<"Height of tree : "<<height(root)<<"\n";
+
+    // int d;
+    // cout<<"Enter distance :"; cin>>d;
+    // cout<<"Nodes at distance "<<d<<" is "; node_at_distance_(d-1, root); cout<<endl;
+
+    levelorder_naive(root); cout<<endl;
 }
