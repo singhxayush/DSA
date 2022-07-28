@@ -1,12 +1,13 @@
 #!/bin/bash
 
-#Enter a name for file
 
 git add .
-
 git status
 
+
+#Enter a message
 read -p "Enter a messge : " x
-git commit -m x
+git commit -m "x"
+
 
 git push

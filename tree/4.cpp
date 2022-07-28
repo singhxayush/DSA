@@ -16,7 +16,7 @@ const double PI = 3.14159265358979323846; // or use macro  M_PI
 void run_time_terror_()
 {
     int x, y;
-    int z;
+    int z, c;
 }
 int main()
 {
