@@ -1,4 +1,5 @@
 // Creating Node
+#include<queue>
 struct node
 {
     int key;
@@ -13,6 +14,8 @@ struct node
 };
 
 typedef node * Node;
+
+
 
 
 // DFS Traversals
@@ -47,6 +50,8 @@ void preorder(Node root)
     }
 }
 
+
+
 // Height of Binary Tree
 
 int height(Node root)
@@ -68,12 +73,31 @@ void node_at_distance_(int k, Node root)
     }
 }
 
+
+
 //Breadth First search - Level order traversal
+
 void levelorder_naive(Node root)
 {
     int h = height(root);
     for(int i=1; i<=h; i++)
     {
         node_at_distance_(i-1, root);
+    }
+}
+
+void levelorder(Node root)
+{
+    if(root == NULL) return;
+    queue<Node> q;
+    q.push(root);
+
+    while(q.empty() == false)
+    {
+        Node cur = q.front();
+        q.pop();
+        cout<<cur->key<<" ";
+        if(cur->left != NULL) q.push(cur->left);
+        if(cur->right != NULL) q.push(cur->right);
     }
 }
