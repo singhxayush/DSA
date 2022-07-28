@@ -6,8 +6,8 @@ git status
 
 
 #Enter a message
-read -p "Enter a messge : " x
-git commit -m "x"
+# read -p "Enter a messge : " x
+git commit -m "."
 
 
 git push

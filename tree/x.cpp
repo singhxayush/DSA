@@ -8,4 +8,5 @@ int main()
     string s; cin>>s;
     string com = "git commit -a" + s;
     system(com.c_str());
+    system("git push");
 }
