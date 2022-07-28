@@ -38,5 +38,7 @@ int main()
 
     root->right->right = new node(6);
 
+    preorder(root); cout<<endl;
     inorder(root); cout<<endl;
+    postorder(root); cout<<endl;
 }

@@ -1,4 +1,4 @@
-#include<iostream>
+// Creating Node
 struct node
 {
     int key;
@@ -15,6 +15,8 @@ struct node
 typedef node * Node;
 
 
+// DFS Traversals
+
 void inorder(Node root)
 {
     if(root != NULL)
@@ -29,6 +31,18 @@ void postorder(Node root)
 {
     if(root != NULL)
     {
-        
+        inorder(root->left);
+        inorder(root->right);
+        cout<<root->key<<" ";
+    }
+}
+
+void preorder(Node root)
+{
+    if(root != NULL)
+    {
+        cout<<root->key<<" ";
+        inorder(root->left);
+        postorder(root->right);
     }
 }
