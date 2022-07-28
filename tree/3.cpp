@@ -19,6 +19,7 @@
            / \     \
           4   5     6
 
+
 */
 #include<iostream>
 using namespace std;
@@ -26,6 +27,7 @@ using namespace std;
 
 int main()
 {
+    
     Node root = new node(1);
     
 
