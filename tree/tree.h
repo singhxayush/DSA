@@ -76,6 +76,8 @@ void node_at_distance_(int k, Node root)
 
 
 //Breadth First search - Level order traversal
+// time complexity - Theta(N)
+// auxilary space - Theta(W) | W -> width of binary tree | 1<=W<=N
 
 void levelorder_naive(Node root)
 {
@@ -96,6 +98,29 @@ void levelorder(Node root)
     {
         Node cur = q.front();
         q.pop();
+        cout<<cur->key<<" ";
+        if(cur->left != NULL) q.push(cur->left);
+        if(cur->right != NULL) q.push(cur->right);
+    }
+}
+
+void levelorder_linebyline_1(Node root)
+{
+    if(root == NULL) return;
+    queue<Node> q;
+    q.push(root);
+    q.push(NULL);
+
+    while(q.size() > 1)
+    {
+        Node cur = q.front();
+        q.pop();
+        if(cur == NULL)
+        {
+            cout<<endl;
+            q.push(NULL);
+            continue;
+        }
         cout<<cur->key<<" ";
         if(cur->left != NULL) q.push(cur->left);
         if(cur->right != NULL) q.push(cur->right);

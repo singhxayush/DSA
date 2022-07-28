@@ -56,5 +56,7 @@ int main()
     // cout<<"Enter distance :"; cin>>d;
     // cout<<"Nodes at distance "<<d<<" is "; node_at_distance_(d-1, root); cout<<endl;
 
-    levelorder_naive(root); cout<<endl;
+    // levelorder_naive(root); cout<<endl;
+    levelorder(root); cout<<endl;
+    levelorder_linebyline_1(root); cout<<endl;
 }
