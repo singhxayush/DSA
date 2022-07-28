@@ -38,5 +38,4 @@ int main()
     root->right->right = new node(6);
 
     inorder(root); cout<<endl;
-    
 }

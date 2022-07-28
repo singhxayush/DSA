@@ -2,12 +2,10 @@
 
 
 git add .
-git status
-
+# git status
 
 #Enter a message
 # read -p "Enter a messge : " x
-git commit -m "."
-
+git commit -a -m "$1"
 
 git push
