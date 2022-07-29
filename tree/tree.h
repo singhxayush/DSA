@@ -1,5 +1,7 @@
 // Creating Node
+#include<iostream>
 #include<queue>
+#include<limits.h>
 struct node
 {
     int key;
@@ -126,3 +128,40 @@ void levelorder_linebyline_1(Node root)
         if(cur->right != NULL) q.push(cur->right);
     }
 }
+
+void levelorder_linebyline_2(Node root) // T.C. O(N) | A.S. Theta(W-width of tree) or O(N)
+{
+    if(root == NULL) return;
+    queue<Node> q;
+    q.push(root);
+    while(q.empty()==false)
+    {
+        int count = q.size();
+        for(int i=0; i<count; i++)
+        {
+            Node cur = q.front();
+            q.pop();
+            cout<<cur->key<<" ";
+            if(cur->left != NULL) q.push(cur->left);
+            if(cur->right != NULL) q.push(cur->right);
+        }
+        cout<<endl;
+    }
+}
+
+
+// Size of a given binary TREE
+int getsize(Node root) // TC : O(N) | AS : O(H)
+{
+    if(root == NULL) return 0;
+    else return 1 + getsize(root->left) + getsize(root->right);
+}
+
+// Maximum in binary tree
+int getmax(Node root)
+{
+    if(root == NULL) return INT_MIN;
+    else return max(root->key, max(getmax(root->left), getmax(root->right)));
+}
+
+// Left view of Binary Tree
