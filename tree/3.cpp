@@ -24,7 +24,7 @@
           10
 
 
-    2md tree we are working on (root 2)
+    2nd tree we are working on (root 2)
 
                5
              /   \
@@ -41,6 +41,8 @@ using namespace std;
 
 int main()
 {
+    //// TREE 1 with root 1 ////
+
     Node root1 = new node(1);
 
     root1->left = new node(2);
@@ -75,6 +77,26 @@ int main()
     // cout<<"size :"<<getsize(root1)<<"\n";
     // cout<<"max : "<<getmax(root1); cout<<endl;
 
-    print_left_view_recursive(root1);
-    print_left_view_iterative(root1);
+    // print_left_view_recursive(root1);
+    // print_left_view_iterative(root1);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //// TRREE 2 with root 2 ////
+
+    Node root2 = new node(5);
+
+    root2->left = new node(2);
+    root2->right = new node(3);
+
+    root2->left->left = new node(1);
+    root2->left->right = new node(1);
+    root2->right->left = new node(2);
+    root2->right->right = new node(1);
+
+    root2->left->left->left = new node(1);
+
+    // if(isCsum(root2)) cout<<"YES\n";
+    // else cout<<"NO\n";
 }
