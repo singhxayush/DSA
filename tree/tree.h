@@ -2,6 +2,7 @@
 #include<iostream>
 #include<queue>
 #include<limits.h>
+using namespace std;
 struct node
 {
     int key;
@@ -165,3 +166,49 @@ int getmax(Node root)
 }
 
 // Left view of Binary Tree
+int maxlevel = 0;
+void left_view_recursive(Node root, int level)
+{
+    if(root == NULL) return;
+    if(maxlevel <level)
+    {
+        cout<<root->key<<" ";
+        maxlevel = level;
+    }
+    left_view_recursive(root->left, level+1);
+    left_view_recursive(root->right, level+1);
+}
+void print_left_view_recursive(Node root)
+{
+    left_view_recursive(root, 1);
+}
+
+void print_left_view_iterative(Node root){
+    if(root==NULL) return;
+    queue<Node> q;
+    q.push(root);
+    while(q.empty()==false)
+    {
+        int count=q.size();
+        for(int i=0;i<count;i++)
+        {
+            Node curr=q.front();
+            q.pop();
+            if(i==0) cout<<curr->key<<" ";
+            if(curr->left!=NULL) q.push(curr->left);
+            if(curr->right!=NULL) q.push(curr->right);
+        }
+    }
+}
+
+
+//children sum property
+bool isCsum(Node root)
+{
+    if(root == NULL) return true;
+    if(root->left == NULL && root->right==NULL) return true;
+    int sum = 0;
+    if(root->left != NULL) sum += root->left->key;
+    if(root->right != NULL) sum += root->right->key;
+    return (root->key == sum && isCsum(root->left) && isCsum(root->right));
+}

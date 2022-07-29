@@ -5,13 +5,13 @@
     Categories
         - Breadth first(or level order)
         - Depth first
-            - inorder   - left root right
-            - preorder  - root left right
-            - postorder - left right root 
+            - inorder   - left root1 right
+            - preorder  - root1 left right
+            - postorder - left right root1 
 
 */
 /*
-    tree we are working on
+    1st tree we are working on (root1 1)
 
                1
              /   \
@@ -23,6 +23,17 @@
            /
           10
 
+
+    2md tree we are working on (root 2)
+
+               5
+             /   \
+            2     3
+           / \   / \
+          1   1 2   1
+         /
+        1
+
 */
 #include<iostream>
 using namespace std;
@@ -30,37 +41,40 @@ using namespace std;
 
 int main()
 {
-    Node root = new node(1);
+    Node root1 = new node(1);
 
-    root->left = new node(2);
-    root->right = new node(3);
+    root1->left = new node(2);
+    root1->right = new node(3);
 
-    root->left->left = new node(4);
-    root->left->right = new node(5);
-    root->right->right = new node(6);
+    root1->left->left = new node(4);
+    root1->left->right = new node(5);
+    root1->right->right = new node(6);
 
-    root->right->right->left = new node(7);
-    root->right->right->right = new node(8);
-    root->left->left->right = new node(9);
+    root1->right->right->left = new node(7);
+    root1->right->right->right = new node(8);
+    root1->left->left->right = new node(9);
 
-    root->left->left->right->left = new node(10);
+    root1->left->left->right->left = new node(10);
     
 
-    // preorder(root); cout<<endl;
-    // inorder(root); cout<<endl;
-    // postorder(root); cout<<endl;
+    // preorder(root1); cout<<endl;
+    // inorder(root1); cout<<endl;
+    // postorder(root1); cout<<endl;
 
-    // cout<<"Height of tree : "<<height(root)<<"\n";
+    // cout<<"Height of tree : "<<height(root1)<<"\n";
 
     // int d;
     // cout<<"Enter distance :"; cin>>d;
-    // cout<<"Nodes at distance "<<d<<" is "; node_at_distance_(d-1, root); cout<<endl;
+    // cout<<"Nodes at distance "<<d<<" is "; node_at_distance_(d-1, root1); cout<<endl;
 
-    // levelorder_naive(root); cout<<endl;
-    // levelorder(root); cout<<endl;
-    // levelorder_linebyline_1(root); cout<<endl;
-    // levelorder_linebyline_2(root); cout<<endl;
+    // levelorder_naive(root1); cout<<endl;
+    // levelorder(root1); cout<<endl;
+    // levelorder_linebyline_1(root1); cout<<endl;
+    // levelorder_linebyline_2(root1); cout<<endl;
 
-    // cout<<"size :"<<getsize(root)<<"\n";
-    cout<<"max : "<<getmax(root); cout<<endl;
+    // cout<<"size :"<<getsize(root1)<<"\n";
+    // cout<<"max : "<<getmax(root1); cout<<endl;
+
+    print_left_view_recursive(root1);
+    print_left_view_iterative(root1);
 }
