@@ -33,7 +33,6 @@
           1   1 2   1
          /
         1
-
 */
 #include<iostream>
 using namespace std;
@@ -99,4 +98,9 @@ int main()
 
     // if(isCsum(root2)) cout<<"YES\n";
     // else cout<<"NO\n";
+
+    if(isbalanced(root2)) cout<<"YES\n";
+    else cout<<"NO\n";
+
+
 }

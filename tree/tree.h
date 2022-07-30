@@ -212,3 +212,8 @@ bool isCsum(Node root)
     if(root->right != NULL) sum += root->right->key;
     return (root->key == sum && isCsum(root->left) && isCsum(root->right));
 }
+
+bool isbalanced(Node root)
+{
+    if(root==NULL) return false;
+}
