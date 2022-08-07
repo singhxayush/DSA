@@ -11,7 +11,7 @@
 
 */
 /*
-    1st tree we are working on (root1 1)
+    1st tree we are working on (root1 1) | Balaced Tree |
 
                1
              /   \
@@ -24,7 +24,7 @@
           10
 
 
-    2nd tree we are working on (root 2)
+    2nd tree we are working on (root 2) | Balanced Tree |
 
                5
              /   \
@@ -77,8 +77,7 @@ int main()
     // cout<<"max : "<<getmax(root1); cout<<endl;
 
     // print_left_view_recursive(root1);
-    // print_left_view_iterative(root1);
-
+    print_left_view_iterative(root1);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -99,8 +98,10 @@ int main()
     // if(isCsum(root2)) cout<<"YES\n";
     // else cout<<"NO\n";
 
-    if(isbalanced(root2)) cout<<"YES\n";
-    else cout<<"NO\n";
+    // if(isbalanced(root2)) cout<<"YES\n";
+    // else cout<<"NO\n";
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 }

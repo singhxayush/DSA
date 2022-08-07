@@ -213,7 +213,12 @@ bool isCsum(Node root)
     return (root->key == sum && isCsum(root->left) && isCsum(root->right));
 }
 
-bool isbalanced(Node root)
+// Check if tree is Height balanced or not
+// binary tree in which the height of the left and right subtree of any node differ by not more than 1.
+bool isbalanced_naive(Node root) // O(N^2)
 {
     if(root==NULL) return false;
+    int lh = height(root->left);
+    int rh = height(root->right);
+    return (abs(lh-rh)<=1 && isbalanced_naive(root->left) && isbalanced_naive(root->right))
 }
