@@ -19,6 +19,7 @@ void n_to_one(int n)
         n_to_one(n-1);
     }
     cout<<0<<"\n";
+    return;
 }
 int main()
 {
