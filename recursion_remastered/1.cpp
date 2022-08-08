@@ -1,7 +1,8 @@
 // 
-
 #include<iostream>
 using namespace std;
+#define  dbg(x) cout<<'d'<<'b'<<'g'<<'-'<<'>'<<x<<endl;
+
 void one_to_n(int n)
 {
     if(n)
@@ -9,6 +10,8 @@ void one_to_n(int n)
         one_to_n(n-1);
         cout<<n<<"\n";
     }
+    return;
+    cout<<0<<"\n";
 }
 
 void n_to_one(int n)
@@ -18,8 +21,8 @@ void n_to_one(int n)
         cout<<n<<"\n";
         n_to_one(n-1);
     }
-    cout<<0<<"\n";
     return;
+    cout<<0<<"\n";
 }
 int main()
 {
