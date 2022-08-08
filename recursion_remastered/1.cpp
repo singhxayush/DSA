@@ -18,6 +18,7 @@ void n_to_one(int n)
         cout<<n<<"\n";
         n_to_one(n-1);
     }
+    cout<<0<<"\n";
 }
 int main()
 {
