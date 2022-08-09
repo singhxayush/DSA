@@ -1,7 +1,5 @@
 /////// Tree Traversal ///////
-
 /*
-
     Categories
         - Breadth first(or level order)
         - Depth first
@@ -9,8 +7,7 @@
             - preorder  - root1 left right
             - postorder - left right root1 
 
-*/
-/*
+
     1st tree we are working on (root1 1) | Balaced Tree |
 
                1
@@ -24,7 +21,7 @@
           10
 
 
-    2nd tree we are working on (root 2) | Balanced Tree |
+    2nd tree we are working on (root 2) | Satisfies Children sum property |
 
                5
              /   \
@@ -33,6 +30,15 @@
           1   1 2   1
          /
         1
+
+    3rd tree we are working on (root 2) | Height Balanced Tree |
+
+               7
+             /   \
+            4     5
+           / \   / 
+          3   1 2   
+          
 */
 #include<iostream>
 using namespace std;
@@ -98,10 +104,17 @@ int main()
     // if(isCsum(root2)) cout<<"YES\n";
     // else cout<<"NO\n";
 
-    // if(isbalanced(root2)) cout<<"YES\n";
-    // else cout<<"NO\n";
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //// TRREE 3 with root 3 ////
 
+    Node root3 = new node(5);
 
+    root3->left = new node(2);
+    root3->right = new node(3);
+
+    root3->left->left = new node(1);
+    root3->left->right = new node(1);
+    root3->right->left = new node(2);
+    root3->right->right = new node(1);
 }
