@@ -93,7 +93,7 @@ int main()
 
     root2->left = new node(2);
     root2->right = new node(3);
-
+    
     root2->left->left = new node(1);
     root2->left->right = new node(1);
     root2->right->left = new node(2);
