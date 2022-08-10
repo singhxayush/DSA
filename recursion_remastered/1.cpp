@@ -13,7 +13,6 @@ void one_to_n(int n)
     return;
     cout<<0<<"\n";
 }
-
 void n_to_one(int n)
 {
     if(n)
