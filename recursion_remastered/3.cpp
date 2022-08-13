@@ -1,3 +1,5 @@
+// Tower of Hanoi
+
 #include<iostream>
 using namespace std;
 
@@ -5,23 +7,24 @@ typedef long long  ll;
 
 static int move_counts = 0;
 
-void toh(int N, char a, char b, char c, int n) // c -> destination, >
+void toh(int N, int a, int b, int c) // c -> destination, >
 {   
     move_counts++;
     if(N==1)
     {
-        cout<<a<<c<<" ";
+        // cout<<a<<c<<" ";
+        cout<<"move "<<N<<" from "<<a<<" to "<<b<<endl;
         return;
     }
-    toh(N-1, a, c, b, n);
-    cout<<a<<c<<" ";
-    toh(N-1, b, a, c, n);
+    toh(N-1, a, c, b);
+    // cout<<a<<c<<" ";
+    cout<<"move "<<N<<" from "<<a<<" to "<<b<<endl;
+    toh(N-1, b, a, c);
 }
 int main()
 {
     int N; cout<<"Enter Number of Discs :"; cin>>N;
-    int n; cin>>n;
 
-    toh(N, 'a', 'b', 'c', n);
+    toh(N, 1, 2, 3);
     cout<<"\nTotal number of moves :"<<move_counts<<endl;
 }
