@@ -83,7 +83,7 @@ int main()
     // cout<<"max : "<<getmax(root1); cout<<endl;
 
     // print_left_view_recursive(root1);
-    print_left_view_iterative(root1);
+    // print_left_view_iterative(root1);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -108,13 +108,15 @@ int main()
 
     //// TRREE 3 with root 3 ////
 
-    Node root3 = new node(5);
+    Node root3 = new node(7);
 
-    root3->left = new node(2);
-    root3->right = new node(3);
+    root3->left = new node(4);
+    root3->right = new node(5);
 
-    root3->left->left = new node(1);
+    root3->left->left = new node(3);
     root3->left->right = new node(1);
     root3->right->left = new node(2);
-    root3->right->right = new node(1);
+
+    if(isbalanced_naive(root2)) cout<<"YES\n";
+    else cout<<"NO\n";
 }
