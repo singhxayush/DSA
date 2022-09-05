@@ -20,7 +20,6 @@ typedef node * Node;
 
 
 
-
 // DFS Traversals
 
 void inorder(Node root)

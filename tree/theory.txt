@@ -34,3 +34,65 @@
     4. Degenerate tree - The easiest of all, degenerate trees are binary trees where every parent node has just one child and that can be either to its left or right
 
     5. Skewed trees are binary trees where every parent node has just a single child and that child should be strict to the left or to the right for all the parents. Slewed trees having all the child nodes aligned to the left are called left-skewed trees, and skewed trees having all the child nodes aligned to the right are called right-skewed trees. 
+
+
+
+/////// APPLICATIONS OF TREE DS ///////
+
+
+    1. To store hirerichal data structure in memory
+        - examples organisation structure, folder structure, html, xml basically nesting of tags
+        - Javascript in browser reads html as a tree and manipulates the code
+        - in heritance
+        - binary search tree
+        - binary heap(to prepresent priority queue)
+        - B & B+ tree in DBMS(data bases)
+        - spanning and shortest path trees
+        - 
+
+    pattern search in entire length of a string, or array, basically a sequence or subsequence search in O(length() of the given pattern)
+        - Now to do this we need to pre-process the string and build a suffix tree and then do the search operation
+
+
+
+
+/////// TREE TRAVERSALS ///////
+
+Categories
+    - Breadth first(or level order)
+    - Depth first
+        - inorder   - left root1 right
+        - preorder  - root1 left right
+        - postorder - left right root1 
+
+
+1st tree we are working on (root1 1) | Balaced Tree |
+
+            1
+          /   \
+         2     3
+        / \     \
+       4   5     6
+        \       / \
+         9     7   8
+        /
+      10
+
+
+2nd tree we are working on (root 2) | Satisfies Children sum property |
+
+            5
+          /   \
+         2     3
+        / \   / \
+       1   1 2   1
+      /
+     1
+
+3rd tree we are working on (root 3) | Height Balanced Tree |
+
+            7
+          /   \
+         4     5
+        / \   / 
+       3   1 2   
