@@ -1,0 +1,6 @@
+#!/bin/bash
+
+read -r file_name < filename
+g++ "$file_name.cpp"
+
+./a.out > op.txt
