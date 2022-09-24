@@ -177,6 +177,7 @@ void left_view_recursive(Node root, int level)
     left_view_recursive(root->left, level+1);
     left_view_recursive(root->right, level+1);
 }
+
 void print_left_view_recursive(Node root)
 {
     left_view_recursive(root, 1);
@@ -221,3 +222,4 @@ bool isbalanced_naive(Node root) // O(N^2)
     int rh = height(root->right);
     return (abs(lh-rh)<=1 && isbalanced_naive(root->left) && isbalanced_naive(root->right));
 }
+
