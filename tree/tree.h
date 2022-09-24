@@ -222,8 +222,3 @@ bool isbalanced_naive(Node root) // O(N^2)
     int rh = height(root->right);
     return (abs(lh-rh)<=1 && isbalanced_naive(root->left) && isbalanced_naive(root->right));
 }
-
-void fun()
-{
-    
-}
