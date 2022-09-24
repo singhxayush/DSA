@@ -223,3 +223,7 @@ bool isbalanced_naive(Node root) // O(N^2)
     return (abs(lh-rh)<=1 && isbalanced_naive(root->left) && isbalanced_naive(root->right));
 }
 
+void fun()
+{
+    
+}
