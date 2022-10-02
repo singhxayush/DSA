@@ -20,7 +20,6 @@ struct node
 typedef node * Node;
 
 
-
 // DFS Traversals
 void inorder(Node root)
 {
@@ -52,7 +51,6 @@ void preorder(Node root)
     }
 }
 
-
 // Height of Binary Tree
 int height(Node root)
 {
@@ -72,8 +70,6 @@ void node_at_distance_(int k, Node root)
         }
     }
 }
-
-
 
 //Breadth First search - Level order traversal
 // time complexity - Theta(N)
@@ -145,7 +141,6 @@ void levelorder_linebyline_2(Node root) // T.C. O(N) | A.S. Theta(W-width of tre
         cout<<endl;
     }
 }
-
 
 // Size of a given binary TREE
 int getsize(Node root) // TC : O(N) | AS : O(H)
@@ -228,4 +223,9 @@ int isbalanced(Node root) // O(N)
     if(rh==-1) return -1;
     if(abs(lh-rh)>1) return -1;
     else return (max(lh, rh) + 1);
+}
+
+int max_width(node root)
+{
+    
 }
