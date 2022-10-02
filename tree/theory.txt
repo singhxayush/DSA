@@ -100,4 +100,4 @@ Categories
           /
          8
         /
-      (9)-> to make unbalanced
+      (9)-> makes tree unbalanced

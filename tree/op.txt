@@ -1,2 +1,1 @@
-is balanced :no
-is balanced :no
+max width : 4
