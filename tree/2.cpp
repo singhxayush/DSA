@@ -51,17 +51,17 @@ int main()
 
     //// TRREE 2 with root 2 ////
 
-    Node root2 = new node(5);
+    // Node root2 = new node(5);
 
-    root2->left = new node(2);
-    root2->right = new node(3);
+    // root2->left = new node(2);
+    // root2->right = new node(3);
     
-    root2->left->left = new node(1);
-    root2->left->right = new node(1);
-    root2->right->left = new node(2);
-    root2->right->right = new node(1);
+    // root2->left->left = new node(1);
+    // root2->left->right = new node(1);
+    // root2->right->left = new node(2);
+    // root2->right->right = new node(1);
 
-    root2->left->left->left = new node(1);
+    // root2->left->left->left = new node(1);
 
     // if(isCsum(root2)) cout<<"YES\n";
     // else cout<<"NO\n";
@@ -77,8 +77,12 @@ int main()
 
     root3->left->left = new node(3);
     root3->left->right = new node(1);
-    root3->right->left = new node(2);
 
-    if(isbalanced_naive(root2)) cout<<"YES\n";
+    root3->right->left = new node(2);
+    root3->right->right = new node(6);
+
+    root3->left->right->left = new node(8);
+
+    if(isbalanced_naive(root3)) cout<<"YES\n";
     else cout<<"NO\n";
 }
