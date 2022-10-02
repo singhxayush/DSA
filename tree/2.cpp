@@ -1,7 +1,5 @@
 /////// Tree Traversal ///////
-/*
-         
-*/
+
 #include<iostream>
 using namespace std;
 #include"tree.h"
@@ -11,18 +9,14 @@ int main()
     //// TREE 1 with root 1 ////
 
     Node root1 = new node(1);
-
     root1->left = new node(2);
     root1->right = new node(3);
-
     root1->left->left = new node(4);
     root1->left->right = new node(5);
     root1->right->right = new node(6);
-
     root1->right->right->left = new node(7);
     root1->right->right->right = new node(8);
     root1->left->left->right = new node(9);
-
     root1->left->left->right->left = new node(10);
     
 
@@ -51,17 +45,14 @@ int main()
 
     //// TRREE 2 with root 2 ////
 
-    // Node root2 = new node(5);
-
-    // root2->left = new node(2);
-    // root2->right = new node(3);
-    
-    // root2->left->left = new node(1);
-    // root2->left->right = new node(1);
-    // root2->right->left = new node(2);
-    // root2->right->right = new node(1);
-
-    // root2->left->left->left = new node(1);
+    Node root2 = new node(5);
+    root2->left = new node(2);
+    root2->right = new node(3);
+    root2->left->left = new node(1);
+    root2->left->right = new node(1);
+    root2->right->left = new node(2);
+    root2->right->right = new node(1);
+    root2->left->left->left = new node(1);
 
     // if(isCsum(root2)) cout<<"YES\n";
     // else cout<<"NO\n";
@@ -74,15 +65,20 @@ int main()
 
     root3->left = new node(4);
     root3->right = new node(5);
-
     root3->left->left = new node(3);
     root3->left->right = new node(1);
-
     root3->right->left = new node(2);
     root3->right->right = new node(6);
-
     root3->left->right->left = new node(8);
+    root3->left->right->left->left = new node(9);//node added for disbalance
+    
+    // cout<<"Height of tree : "<<height(root3)<<"\n";
 
-    if(isbalanced_naive(root3)) cout<<"YES\n";
-    else cout<<"NO\n";
+    // cout<<"is balanced :"; // naive
+    // isbalanced_naive(root3)?cout<<"yes\n":cout<<"no\n";
+
+    // cout<<"is balanced :"; // efficient
+    // (isbalanced(root3)!=-1)?cout<<"yes\n":cout<<"no\n";
+
+    
 }

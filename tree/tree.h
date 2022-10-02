@@ -6,6 +6,7 @@ using namespace std;
 struct node
 {
     int key;
+    int depth;
     node * left;
     node * right;
 
@@ -21,7 +22,6 @@ typedef node * Node;
 
 
 // DFS Traversals
-
 void inorder(Node root)
 {
     if(root != NULL)
@@ -53,9 +53,7 @@ void preorder(Node root)
 }
 
 
-
 // Height of Binary Tree
-
 int height(Node root)
 {
     if(root == NULL) return 0;
@@ -80,7 +78,6 @@ void node_at_distance_(int k, Node root)
 //Breadth First search - Level order traversal
 // time complexity - Theta(N)
 // auxilary space - Theta(W) | W -> width of binary tree | 1<=W<=N
-
 void levelorder_naive(Node root)
 {
     int h = height(root);
@@ -201,7 +198,6 @@ void print_left_view_iterative(Node root){
     }
 }
 
-
 //children sum property
 bool isCsum(Node root)
 {
@@ -217,9 +213,19 @@ bool isCsum(Node root)
 // binary tree in which the height of the left and right subtree of any node differ by not more than 1.
 bool isbalanced_naive(Node root) // O(N^2)
 {
-    if(root==NULL) return false;
+    if(root==NULL) return true;
     int lh = height(root->left);
     int rh = height(root->right);
-    return (abs(lh-rh)<=1 && isbalanced_naive(root->    left) && isbalanced_naive(root->right));
+    return (abs(lh-rh)<=1 && isbalanced_naive(root->left) && isbalanced_naive(root->right));
 }
 
+int isbalanced(Node root) // O(N)
+{
+    if(root==NULL) return 0;
+    int lh = isbalanced(root->left);
+    if(lh==-1) return -1;
+    int rh = isbalanced(root->right);
+    if(rh==-1) return -1;
+    if(abs(lh-rh)>1) return -1;
+    else return (max(lh, rh) + 1);
+}

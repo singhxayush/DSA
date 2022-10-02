@@ -89,6 +89,7 @@ Categories
       /
      1
 
+
 3rd tree we are working on (root 3) | Height Balanced Tree |
 
             7
@@ -98,3 +99,5 @@ Categories
        3   1 2   6
           /
          8
+        /
+      (9)-> to make unbalanced
