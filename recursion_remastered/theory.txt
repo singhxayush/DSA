@@ -2,3 +2,9 @@
 - visualise recursive tree
 
 
+- flow : I B H
+
+    step1 : hypothesis
+    step2 : base
+    step3 : induction
+

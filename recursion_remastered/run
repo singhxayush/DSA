@@ -1,9 +1,11 @@
 #!/bin/bash
+echo " " > op.txt
+
 
 read -r file_name < filename
 g++ "$file_name.cpp"
 
-./a.out < ip.txt > op.txt
+./a.out > op.txt
 # ./chk >> op.txt
 
 # gedit op.txt
