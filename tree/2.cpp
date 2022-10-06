@@ -1,7 +1,5 @@
 /////// Tree Traversal ///////
 
-#include<iostream>
-using namespace std;
 #include"tree.h"
 
 int main()
@@ -82,6 +80,12 @@ int main()
 
     // cout<<"max width : "<<max_width(root3);
 
-    
+    //// FLATTENING THE TREE
+    // Node head = BTtoDLL_in(root3); printlist(head);
+
+    inorder(root3);
+    // Node head = BTtoDLL_pre(root3); printlist(head);
+    // preorder(root3);
+
 cout<<"";
 }

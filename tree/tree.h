@@ -9,7 +9,6 @@ struct node
     int depth;
     node * left;
     node * right;
-
     node(int x)
     {
         key = x;
@@ -21,8 +20,14 @@ typedef node * Node;
 
 
 // DFS Traversals
+bool dfstraversal = true;
 void inorder(Node root)
 {
+    if(dfstraversal)
+    {
+        cout<<"InOrder : ";
+        dfstraversal = false;
+    }
     if(root != NULL)
     {
         inorder(root->left);
@@ -33,6 +38,11 @@ void inorder(Node root)
 
 void postorder(Node root)
 {
+    if(dfstraversal)
+    {
+        cout<<"PostOrder : ";
+        dfstraversal = false;
+    }
     if(root != NULL)
     {
         inorder(root->left);
@@ -43,6 +53,12 @@ void postorder(Node root)
 
 void preorder(Node root)
 {
+
+    if(dfstraversal)
+    {
+        cout<<"PreOrder : ";
+        dfstraversal = false;
+    }
     if(root != NULL)
     {
         cout<<root->key<<" ";
@@ -50,6 +66,7 @@ void preorder(Node root)
         postorder(root->right);
     }
 }
+
 
 // Height of Binary Tree
 int height(Node root)
@@ -248,3 +265,39 @@ int max_width(Node root) // A.S. Theta(width) | T.C. Theta(N)
     return res;
 }
 
+// Flatten The Tree section
+// bool storehead = true;
+Node BTtoDLL_in(Node root)
+{
+    static Node prev = NULL;
+    if(root == NULL) return root;
+    Node head = BTtoDLL_in(root->left);
+    if(prev == NULL) head = root;
+    else
+    {
+        root->left = prev;
+        prev->right = root;
+    }
+    prev = root;
+    BTtoDLL_in(root->right);
+
+    prev->right = head;
+    head->left = prev;
+    return head;
+}
+
+void printlist(Node head)
+{
+    cout<<"LIST : ";
+    Node cur = head;
+
+    // while(cur->left != head) {
+    //     cout<<cur->key<<" ";
+    //     cur = cur->left;
+    // } cout<<endl;
+
+    while(cur->right!= head) {
+        cout<<cur->key<<" ";
+        cur = cur->right;
+    } cout<<endl;
+}
