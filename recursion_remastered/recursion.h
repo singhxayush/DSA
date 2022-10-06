@@ -42,6 +42,7 @@ void ntoone(int n)
 int top;
 void insert_r(int a[], int key, int top) 
 {
+    cout<<"top :"<<top<<endl;
     dbg(a[top])
 
     if(top==0 || a[top]<=key) {
