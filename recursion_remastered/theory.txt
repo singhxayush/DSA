@@ -1,0 +1,4 @@
+- reducing the soln size | (make input smaller)
+- visualise recursive tree
+
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+read -r file_name < filename
+g++ "$file_name.cpp"
+
+./a.out < ip.txt > op.txt
+# ./chk >> op.txt
+
+# gedit op.txt
+# code op.txt
+
+exit 0
