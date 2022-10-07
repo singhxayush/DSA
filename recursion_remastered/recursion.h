@@ -18,7 +18,7 @@ void ntoone(int n)
     ntoone(n-1);
 }
 
-// // sorting using recursive insertion sort
+// sorting using recursive insertion sort
 
 // void insert_r(vector<int> &v, int key) {
 //     if(v.size()==0 || v.back()<=key){ 
@@ -39,25 +39,26 @@ void ntoone(int n)
 //     insert_r(v, key);
 // }
 
-int top;
-void insert_r(int a[], int key, int top) 
-{
-    cout<<"top :"<<top<<endl;
-    dbg(a[top])
 
-    if(top==0 || a[top]<=key) {
+int top = 0;
+void insert_r(int a[], int key) 
+{
+    // cout<<top<<" "<<a[top]<<" "<<key<<endl;
+
+    if(top==0 || a[top-1]<=key) {
         a[top] = key;
         return;
     }
     int val = a[top--];
-    insert_r(a, key, top);
+    insert_r(a, key);
     a[++top] = val;
     return;
 }
 void sortarray(int a[], int n) {
     if(n==0) return;
     sortarray(a, n-1);
+    int top;
     top = n-1;
     int key = a[top];
-    insert_r(a, key, top);
+    insert_r(a, key);
 }
