@@ -43,5 +43,13 @@ int main()
     // toh(2, 1, 2, 3);
     // subset("abc");
 
+    // string ip, op;
+    // ip = "abc";
+    // op += ip[0];
+    // ip.erase(ip.begin()+0);
+    // spaced_permutation(op, ip);
+
+    // permutation_with_case_change("Abc");
+    // letter_case_permutation("a1B2c3");
     
 }

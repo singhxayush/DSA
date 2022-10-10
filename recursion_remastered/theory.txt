@@ -10,4 +10,50 @@
 
 - input & output method
 
-- 
+
+
+ip / op idology
+
+        #subset generation
+        "abc" -> ip
+         ""   -> op
+         
+            - base condition is ip length == 0
+            - left part of the recursive tree will include next char to op form the ip
+            - right part wont
+            - input size will get smaller at every recursive step\level after by a char added to the op
+            - op | ip format representation in the tree
+            - THETA( 2^N ) complexity | exact where N is the length of the string
+            
+
+                    ""  |  abc
+                    /       \
+                 a|bc        |bc
+                /    \       /  \
+            ab|c     a|c   b|c   |c
+            /\       /\    /\    /\
+         abc  ab   ac  a  bc b  c ""  + | all empty ip strings after removal of c hence the base
+
+
+
+        #Permutation with spaces
+        "abc" | initialization step
+        -> ip("bc") 
+        -> op("a")
+
+            - base condition is ip length == 0
+            - left part of the recursive tree will include space before next char
+            - right part wont inlucde space before next char
+            - input size will get smaller at every recursive step\level after by a char added to the op
+            - op | ip format representation in the tree
+            - THETA( 2^(N-1) ) complexity | exact where N is the length of the string
+
+                      a|bc
+                     /    \
+                a_b|c      ab|c
+                /   \      /   \
+           a_b_c   a_bc  ab_c   abc  + | all empty ip strings after removal of c hence the base
+
+
+
+

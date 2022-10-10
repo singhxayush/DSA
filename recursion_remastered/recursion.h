@@ -5,6 +5,7 @@
 using namespace std;
 #define  dbg(x) cout<<'d'<<'b'<<'g'<<'-'<<'>'<<x<<endl;
 
+#define el "\n"
 
 void oneton(int n)
 {
@@ -173,7 +174,86 @@ void subset(string ip, string op="")
     subset(temp, op+ip[0]);
 }
 
-void spaced_permutation(string ip, string op="")
+void spaced_permutation(string op, string ip)
 {
-    
+    if(ip.length()==0)
+    {
+        cout<<op<<"\n";
+        return;
+    }
+
+    string op1 = op; // op1 includes space
+    string op2 = op; // op2 does not
+
+    op1 += "_";
+    op1 += ip[0];
+    op2 += ip[0];
+
+    ip.erase(ip.begin()+0);
+
+    spaced_permutation(op1, ip);
+    spaced_permutation(op2, ip);
 }
+
+void permutation_with_case_change(string ip, string op="")
+{
+    if(ip.length()==0)
+    {
+        cout<<op<<"\n";
+        return;
+    }
+
+    string op1, op2;
+    op1 = op;
+    op2 = op;
+
+    op1 += ip[0]; // simple output
+
+    char c = ip[0];
+    if(islower(c)) c = toupper(c);
+    else if(isupper(c)) c = tolower(c);
+    op2 += c; // changed case output
+
+    ip.erase(ip.begin()+0); // decreasing ip size
+
+    permutation_with_case_change(ip, op2);
+    permutation_with_case_change(ip, op1);
+}
+
+void letter_case_permutation(string ip, string op="")
+{
+    if(ip.length()==0)
+    {
+        cout<<op<<el;
+        return;
+    }
+
+    string op1, op2;
+    op1 = op;
+    op2 = op;
+
+    while(ip.length()>0 && isdigit(ip[0])) // ignoring the digits
+    {
+        op1 += ip[0];
+        op2 += ip[0];
+        ip.erase(ip.begin()+0);
+    }
+    if(ip.length()==0) 
+    {
+        cout<<op1<<el;
+        return;
+    }
+
+    op1 += ip[0]; // simple output
+
+    char c = ip[0];
+    if(islower(c)) c = toupper(c);
+    else if(isupper(c)) c = tolower(c);
+    op2 += c; // changed case output
+
+    ip.erase(ip.begin()+0); // decreasing ip size
+    
+    letter_case_permutation(ip, op2);
+    letter_case_permutation(ip, op1);
+}
+
