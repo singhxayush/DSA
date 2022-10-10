@@ -31,3 +31,4 @@ int main()
     insert(a, top, k);
     for(int i=0; i<n; i++) cout<<a[i]<<" ";
 }
+

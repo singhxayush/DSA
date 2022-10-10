@@ -8,3 +8,6 @@
     step2 : base
     step3 : induction
 
+- input & output method
+
+- 

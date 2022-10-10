@@ -146,3 +146,34 @@ void reverse_stack(stack<int> &s)
 
     insert(s, key);
 }
+
+void toh(int n, int a, int b, int c) // s a d
+{
+    if(n==1) 
+    {
+        cout<<"move plate 1 from "<<a<<" to "<<c<<"\n";
+        return;
+    }
+    toh(n-1, a, c, b);
+    cout<<"move plate "<<n<<" from "<<a<<" to "<<c<<"\n";
+    toh(n-1, b, a, c);
+}
+
+void subset(string ip, string op="")
+{
+    if(ip.empty())
+    {
+        cout<<op<<"\n";
+        return;
+    }
+
+    string temp = ip;
+    temp.erase(temp.begin() + 0);
+    subset(temp, op);
+    subset(temp, op+ip[0]);
+}
+
+void spaced_permutation(string ip, string op="")
+{
+    
+}

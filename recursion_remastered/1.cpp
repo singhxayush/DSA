@@ -22,21 +22,26 @@ int main()
     // for(int i=0; i<v.size(); i++) cout<<v[i]<<" ";
 
     //sort stack
-    stack<int> s;
-    s.push(1);
-    s.push(4);
-    s.push(0);
-    s.push(-1);
-    s.push(2);
-    s.push(0);
+    // stack<int> s;
+    // s.push(1);
+    // s.push(4);
+    // s.push(0);
+    // s.push(-1);
+    // s.push(2);
+    // s.push(0);
 
     // sort_stack(s);
     // int pos = s.size()/2+1;
     // delete_midelm_stack(s, pos);
     // sort_stack_rev(s);
-    reverse_stack(s);
-    while(!s.empty()) {
-        cout << s.top() << " ";
-        s.pop();
-    }
+    // reverse_stack(s);
+    // while(!s.empty()) {
+    //     cout << s.top() << " ";
+    //     s.pop();
+    // }
+
+    // toh(2, 1, 2, 3);
+    // subset("abc");
+
+    
 }
