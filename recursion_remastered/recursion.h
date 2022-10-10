@@ -257,3 +257,10 @@ void letter_case_permutation(string ip, string op="")
     letter_case_permutation(ip, op1);
 }
 
+// void all_balanced_parenthesis(int n, int x, string s = "()")
+// {
+//     if(x == n)
+//     {
+//         cout<<
+//     }
+// }

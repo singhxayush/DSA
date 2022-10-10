@@ -51,5 +51,8 @@ int main()
 
     // permutation_with_case_change("Abc");
     // letter_case_permutation("a1B2c3");
-    
+
+    string s = "[123]";
+    reverse(s.begin(),s.end());
+    cout<<s;
 }

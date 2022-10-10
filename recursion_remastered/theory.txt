@@ -10,6 +10,7 @@
 
 - input & output method
 
+- when choices and decision comes up, it can be best represented as recursive tree
 
 
 ip / op idology
