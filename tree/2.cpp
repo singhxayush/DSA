@@ -83,8 +83,8 @@ int main()
     //// FLATTENING THE TREE
     // Node head = BTtoDLL_in(root3); printlist(head);
 
-    inorder(root3);
-    // Node head = BTtoDLL_pre(root3); printlist(head);
+    // inorder(root3);
+    Node head = BTtoDLL_in(root3); printlist(head);
     // preorder(root3);
 
 cout<<"";

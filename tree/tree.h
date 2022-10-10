@@ -266,12 +266,12 @@ int max_width(Node root) // A.S. Theta(width) | T.C. Theta(N)
 }
 
 // Flatten The Tree section
-// bool storehead = true;
 Node BTtoDLL_in(Node root)
 {
     static Node prev = NULL;
+    static Node head = NULL;
     if(root == NULL) return root;
-    Node head = BTtoDLL_in(root->left);
+    BTtoDLL_in(root->left);
     if(prev == NULL) head = root;
     else
     {
@@ -280,24 +280,13 @@ Node BTtoDLL_in(Node root)
     }
     prev = root;
     BTtoDLL_in(root->right);
-
-    prev->right = head;
-    head->left = prev;
     return head;
 }
 
 void printlist(Node head)
 {
-    cout<<"LIST : ";
-    Node cur = head;
-
-    // while(cur->left != head) {
-    //     cout<<cur->key<<" ";
-    //     cur = cur->left;
-    // } cout<<endl;
-
-    while(cur->right!= head) {
-        cout<<cur->key<<" ";
-        cur = cur->right;
+    cout<<"LIST : "; while(head->left != NULL) {
+        cout<<head->key<<" ";
+        head = head->left;
     } cout<<endl;
 }
