@@ -52,7 +52,10 @@ int main()
     // permutation_with_case_change("Abc");
     // letter_case_permutation("a1B2c3");
 
-    string s = "[123]";
-    reverse(s.begin(),s.end());
-    cout<<s;
+    // string s = "[123]";
+    // reverse(s.begin(),s.end());
+    // cout<<s;
+
+    // all_balanced_parenthesis(2);
+    // print_NbitBinaryNo_with_1smorethan0s(4);
 }

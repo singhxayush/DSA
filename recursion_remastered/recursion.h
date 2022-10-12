@@ -257,10 +257,50 @@ void letter_case_permutation(string ip, string op="")
     letter_case_permutation(ip, op1);
 }
 
-// void all_balanced_parenthesis(int n, int x, string s = "()")
-// {
-//     if(x == n)
-//     {
-//         cout<<
-//     }
-// }
+void all_balanced_parenthesis(int n, string s="", int opencount = 0, int closecount = 0)
+{
+    if(opencount > n) return;
+    if(closecount > opencount) return;
+    if(opencount == closecount && (closecount+closecount)==2*n)
+    {
+        cout<<s<<el;
+        return;
+    }
+
+    // recusively call left and right part
+    // left will include open right will include closed
+
+    string s_left, s_right;
+
+    s_left = s;
+    s_right = s;
+    
+    s_left += '(';
+    if(opencount>0 && closecount<opencount) s_right += ')';
+
+    all_balanced_parenthesis(n, s_left, opencount+1, closecount); //left call
+    all_balanced_parenthesis(n, s_right, opencount, closecount+1); // right call
+}
+
+void print_NbitBinaryNo_with_1smorethan0s(int n, string s = "", int count1 = 0, int count0 = 0)
+{
+    if(count1 > n) return;
+    if(count0>count1) return;
+    if(count1+count0==n)
+    {
+        cout<<s<<el;
+        return;
+    }
+    // recursively calling left and right part
+    // left will include 1s and right will include 0s
+    string s_left, s_right;
+
+    s_left = s;
+    s_right = s;
+
+    s_left += '1';
+    if(count1>0 && count0<count1) s_right += '0';
+
+    print_NbitBinaryNo_with_1smorethan0s(n, s_left, count1+1, count0); // left tree call
+    print_NbitBinaryNo_with_1smorethan0s(n, s_right, count1, count0+1); // right tree call
+}

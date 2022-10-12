@@ -1,3 +1,10 @@
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+                        R E C U R S I O N
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
 - reducing the soln size | (make input smaller)
 - visualise recursive tree
 
@@ -12,6 +19,10 @@
 
 - when choices and decision comes up, it can be best represented as recursive tree
 
+- intutively recursion problems are classified under few notable category
+    > problem it self is described recursively! (easiest)
+    > tree based
+    > choices and decision
 
 ip / op idology
 
@@ -57,4 +68,11 @@ ip / op idology
 
 
 
+
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+                    B A C K T R A C K I N G
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
