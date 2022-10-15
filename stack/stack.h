@@ -79,4 +79,5 @@ void prev_smallest_elm(vector<int> a)
         else s.push_back(-1);
         t.push(x);
     }
+    for(auto x : s) cout<<x<<" ";
 }
