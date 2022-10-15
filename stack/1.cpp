@@ -6,5 +6,5 @@ int main()
     // next_largest_elm(v);
     // prev_largest_elm(v);
     // next_smallest_elm(v);
-    prev_smallest_elm(v);
+    // prev_smallest_elm(v);
 }

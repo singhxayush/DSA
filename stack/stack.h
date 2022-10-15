@@ -29,23 +29,15 @@ void next_largest_elm(vector<int> a)
 // prev largest element or nearest greater to left
 void prev_largest_elm(vector<int> a)
 {
-    int c = 0;
     stack<int> t;
     vector<int> s;
     for(auto x : a)
     {
-        while(++c && !t.empty() && t.top()<x) t.pop();
-        if(!t.empty()) {
-            s.push_back(t.top());
-            t.push(x);
-        }
-        else{
-            s.push_back(-1);
-            t.push(x);
-        }
-        c++;
+        while(!t.empty() && t.top()<x) t.pop();
+        if(!t.empty()) s.push_back(t.top());
+        else s.push_back(-1);
+        t.push(x);
     }
-    cout<<"loop count : "<<c<<"\n";
     for(auto x : s) cout<<x<<" ";
 }
 
@@ -80,4 +72,17 @@ void prev_smallest_elm(vector<int> a)
         t.push(x);
     }
     for(auto x : s) cout<<x<<" ";
+}
+
+// follows same pattern as nearest greater to left
+void stock_span(vector<int> a)
+{
+    stack<int> t;
+    stack<pair<int, int>> s;
+    int c = 1;
+    for(int i=a.size()-1; i>=0; i--){
+        while(!t.empty() && t.top()<a[i]){ t.pop(); c++; }
+        if(t.empty()) s.push({-1, i});
+        else s.
+    }
 }
