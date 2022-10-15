@@ -1,9 +1,10 @@
-///////  ///////
+#include"stack.h"
 
-#include<iostream>
-using namespace std;
 int main()
 {
-    const long double PI = 3.14159265358979323846; // or use macro  M_PI
-    printf("%0.1Lf",PI);
+    vector<int> v = {1, 4, 2, 0, 30, 1, 4, 6, 3, 0, 12};
+    // next_largest_elm(v);
+    // prev_largest_elm(v);
+    // next_smallest_elm(v);
+    
 }
