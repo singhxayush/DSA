@@ -3,6 +3,7 @@ using namespace std;
 #define  dbg(x) cout<<'d'<<'b'<<'g'<<'-'<<'>'<<x<<endl;
 #define pr(x) cout<<x<<" ";
 #define endl "\n"
+#define MAX 1000
 
 //next largest element or nearest greater to right
 void next_largest_elm(vector<int> a)
@@ -172,5 +173,103 @@ void max_area_histogram2(vector<int> a)
     for(int i=0; i<n; i++) v[i] = a[i]*(v[i]-1);
     
     cout<<*max_element(v.begin(), v.end());
+}
+
+
+// max area of rectangle in a binary matrix of size n x m
+/* 
+    consider a 4x4 matrix
+    4 4
+    0 1 1 0
+    1 1 1 1
+    1 1 1 1
+    1 1 0 0
+
+    max are of rectangle is 8
+    1 1 1 1
+    1 1 1 1
+
+    - this problem follows maximum histogram area problem
+    - where each row can be considered as histogram with height till sum of continuous 1s upward
+    - for example in the above case 4 histograms are
+
+        histogram |  max area of histogram 
+        {0 1 1 0} |     2
+        {1 2 2 1} |     4
+        {2 3 3 2} |     8
+        {3 4 0 0} |     6
+
+        hence 8 answer
+*/
+int solve(vector<int> a)
+{
+    int n = a.size();
+
+    stack<pair<int, int>> l;
+    stack<pair<int, int>> r;
+    vector<int> v(n, 0);
+
+    for(int i=0; i<n; i++)
+    {
+        while(!l.empty() && l.top().first>=a[i]) l.pop();
+        while(!r.empty() && r.top().first>=a[n-1-i]) r.pop();
+
+        if(l.empty()) v[i] += i+1;
+        else v[i] +=  i - l.top().second;
+        l.push({a[i], i});
+
+        if(r.empty()) v[n-1-i] += i+1;
+        else v[n-1-i] += r.top().second - (n-1-i);
+        r.push({a[n-1-i], n-1-i});
+    }
+    for(int i=0; i<n; i++) v[i] = a[i]*(v[i]-1);
+    
+    return (*max_element(v.begin(), v.end()));
+}
+void max_area_rectangle_in_binary_matrix(int a[MAX][MAX], int n, int m)
+{
+    int res = 0;
+
+    for(int i=0; i<n; i++){
+        vector<int> arr;
+        for(int j=0; j<m; j++){
+            if(i && a[i][j]) a[i][j] += a[i-1][j];
+            arr.push_back(a[i][j]);
+        }
+        res = max(res, solve(arr));
+    }
+    cout<<"MAX area : "<<res<<endl;
+}
+
+// Rain water trapping
+/*  
+    - basically we have to trap rain water between the blocks
+    - sizes of some conseutive blocks and rain water has to be stored in between them
+    - for example
+
+        3   0   0   2   0   4
+        _                   _
+        _           _       _
+        _           _       _
+        _____________________
+
+        it will store 2*2 = 4 units of water between 3 & 2
+        and 1*2 = 2 units of water between 2 & 4
+        Hence the result is 4+2 = 6 units of water
+*/
+void rain_water_trapping(vector<int> a)
+{
+    int n = a.size();
+    int ml = 0, mr = 0;
+    vector<int> l(n), r(n);
+    for(int i=0; i<n; i++){
+        if(ml<a[i]) ml = a[i];
+        l[i] = ml;
+        if(mr<a[n-1-i]) mr = a[n-1-i];
+        r[n-1-i] = mr;
+    }
+    int res = 0;
+    for(int i=0; i<n; i++) res += min(l[i], r[i])-a[i];
+    cout<<"total water stored : "<<res<<"\n";
 }
 
