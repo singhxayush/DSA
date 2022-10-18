@@ -13,14 +13,9 @@ void next_largest_elm(vector<int> a)
     for(int i = n-1; i>=0; i--)
     {
         while(!temp.empty() && temp.top()<a[i]) temp.pop();
-        if(temp.empty()){
-            soln.push(-1);
-            temp.push(a[i]);
-        }
-        else{
-            soln.push(temp.top());
-            temp.push(a[i]);
-        }
+        if(temp.empty()) soln.push(-1);
+        else soln.push(temp.top());
+        temp.push(a[i]);
     }
     while(!soln.empty()) { cout<<soln.top()<<" "; soln.pop(); } }
 
@@ -91,7 +86,7 @@ void stock_span(vector<int> a)
     for(auto x : res) cout<<x<<"\t";cout<<endl;
 }
 
-// Maximum Area of histogram : most popular qsn of stack
+// Maximum Area of histogram : most popular std qsn on stack
 // follows same pattern as next and prev nearest smaller
 // same as stock span, but here we have to take greater or equal limit
 // and check in adjacent sides instead of just one
@@ -244,8 +239,8 @@ void max_area_rectangle_in_binary_matrix(int a[MAX][MAX], int n, int m)
 // Rain water trapping
 /*  
     - basically we have to trap rain water between the blocks
-    - sizes of some conseutive blocks and rain water has to be stored in between them
-    - for example
+    - sizes of some conseutive blocks are given and rain water has to be stored in between them
+    - for example (cosider vector v2)
 
         3   0   0   2   0   4
         _                   _
@@ -272,4 +267,3 @@ void rain_water_trapping(vector<int> a)
     for(int i=0; i<n; i++) res += min(l[i], r[i])-a[i];
     cout<<"total water stored : "<<res<<"\n";
 }
-
