@@ -2,6 +2,7 @@
 using namespace std;
 #define  dbg(x) cout<<'d'<<'b'<<'g'<<'-'<<'>'<<x<<endl;
 #define pr(x) cout<<x<<" ";
+#define endl "\n"
 
 //next largest element or nearest greater to right
 void next_largest_elm(vector<int> a)
@@ -109,28 +110,67 @@ void stock_span(vector<int> a)
 */
 void max_area_histogram(vector<int> a)
 {
+    int n = a.size();
+    for(auto x : a) cout<<x<<"\t"; cout<<endl;
+
     stack<pair<int, int>> t;
-    stack<pair<int, int>> s;
-    vector<int> l, r;
+    vector<int> l;
     int c = 0;
-    for(auto x : a){
-        while(!t.empty() && t.top().first<=x) t.pop();
+    for(auto x : a) // left part
+    {
+        while(!t.empty() && t.top().first>=x) t.pop();
 
         if(t.empty()) l.push_back(c+1);
         else l.push_back(c - t.top().second);
         t.push({x, c++});
     }
+    for(auto x : l) cout<<x<<"\t"; cout<<endl;
+
+    stack<pair<int, int>> s;
+    vector<int> r;
     c = 0;
-    for(int i=a.size()-1; i>=0; i--) {
-        while(!s.empty() && s.top().first<=a[i]) t.pop();
-        if(t.empty()) r.push_back(i+1);
-        else r.push_back(abs(s.top().second - i));
+    for(int i=n-1; i>=0; i--) // right part
+    {
+        while(!s.empty() && s.top().first>=a[i]) s.pop();
+        if(s.empty()) r.push_back(1);
+        else r.push_back(s.top().second - i);
         s.push({a[i], i});
     }
-    int res = -1;
-    for(int i = 0; i<r.size()-1; i++){
-        int xx = abs(r[a.size()-i-1]-l[i]-1);
-        res = max(res, xx);
-    }
-    cout<<res;
+    reverse(r.begin(), r.end());
+    for(auto x : r) cout<<x<<"\t"; cout<<endl;
+
+    int xx = 0;
+    for(int i=0; i<n; i++){
+        int k = a[i]*(r[i]+l[i]-1);
+        cout<<k<<"\t";
+        xx = max(xx, k);
+    } cout<<endl;
+    cout<<"\nMAX AREA : "<<xx<<"\n";
 }
+
+void max_area_histogram2(vector<int> a)
+{
+    int n = a.size();
+
+    stack<pair<int, int>> l;
+    stack<pair<int, int>> r;
+    vector<int> v(n, 0);
+
+    for(int i=0; i<n; i++)
+    {
+        while(!l.empty() && l.top().first>=a[i]) l.pop();
+        while(!r.empty() && r.top().first>=a[n-1-i]) r.pop();
+
+        if(l.empty()) v[i] += i+1;
+        else v[i] +=  i - l.top().second;
+        l.push({a[i], i});
+
+        if(r.empty()) v[n-1-i] += i+1;
+        else v[n-1-i] += r.top().second - (n-1-i);
+        r.push({a[n-1-i], n-1-i});
+    }
+    for(int i=0; i<n; i++) v[i] = a[i]*(v[i]-1);
+    
+    cout<<*max_element(v.begin(), v.end());
+}
+

@@ -10,5 +10,6 @@ int main()
     // stock_span(v);
 
     vector<int> v1{6, 2, 5, 4, 5, 1, 6};
-    max_area_histogram(v1);
+    max_area_histogram2(v1);
+    // stock_span(v1);
 }
