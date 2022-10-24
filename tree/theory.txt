@@ -29,7 +29,7 @@
 
 
     3. complete binary tree
-    all levels are completly filled except possibly last level + last level must have its as left as possible
+    all levels are completly filled except possibly last level + last level must have its leafs as left as possible
 
     4. Degenerate tree - The easiest of all, degenerate trees are binary trees where every parent node has just one child and that can be either to its left or right
 
@@ -66,7 +66,7 @@ Categories
         - postorder - left right root1 
 
 
-1st tree we are working on (root1 1) | Balaced Tree |
+1st tree we are working on (root 1) | Balaced Tree |
 
             1
           /   \
@@ -101,5 +101,9 @@ Categories
          8
         /
       (9)-> makes tree unbalanced
+
+
+
+
 
 
