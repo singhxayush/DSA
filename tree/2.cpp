@@ -18,7 +18,9 @@ int main()
     root1->l->l->r->l = new node(10);
     
     // preorder(root1);
-    postorder(root1);
+    // postorder(root1);
+    // inorder(root1);
+    level_order(root1);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 

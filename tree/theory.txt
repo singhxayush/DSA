@@ -61,9 +61,9 @@
 Categories
     - Breadth first(or level order)
     - Depth first
-        - inorder   - left root1 right
-        - preorder  - root1 left right
-        - postorder - left right root1 
+        - preorder  - root left right
+        - inorder   - left root right
+        - postorder - left right root
 
 
 1st tree we are working on (root 1) | Balaced Tree |
