@@ -1,6 +1,7 @@
 // Creating Node
 #include<iostream>
 #include<queue>
+#include<stack>
 #include<limits.h>
 using namespace std;
 
@@ -51,15 +52,37 @@ void level_order(Node root) {
 
     q.push(root);
 
-    if(!q.empty()){
+    while(!q.empty()){
+
         int n = q.size();
         for(int i=0; i<n; i++){
-            Node temp = q.front();
-            cout<<temp->val<<" ";
+            Node cur = q.front();
             q.pop();
-            if(!temp->l) q.push(temp->l);
-            if(!temp->r) q.push(temp->r);
+            if(cur->l != NULL) q.push(cur->l);
+            if(cur->r != NULL) q.push(cur->r);
+            cout<<cur->val<<" ";
         }
         cout<<"\n";
     }
 }
+
+void i_preorder(Node root) {
+
+    if(!root) return;
+
+    stack<Node> st;
+
+    st.push(root);
+
+    while(!st.empty()) {
+        int n = st.size();
+        for(int i=0; i<n; i++) {
+            Node cur = st.top();
+            st.pop();
+            if(cur->r != NULL) st.push(cur->r);
+            if(cur->l != NULL) st.push(cur->l);
+            cout<<cur->val<<" ";
+        }
+    }
+}
+

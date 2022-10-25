@@ -20,7 +20,9 @@ int main()
     // preorder(root1);
     // postorder(root1);
     // inorder(root1);
-    level_order(root1);
+    // level_order(root1);
+    // i_preorder(root1);
+    
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
