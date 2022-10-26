@@ -1,5 +1,3 @@
-/////// Tree Traversal ///////
-
 #include"tree.h"
 
 int main()
@@ -18,11 +16,12 @@ int main()
     root1->l->l->r->l = new node(10);
     
     // preorder(root1);
-    // postorder(root1);
     // inorder(root1);
-    // level_order(root1);
+    // postorder(root1);
+    // levelorder(root1);
     // i_preorder(root1);
-    
+    // i_inorder(root1);
+    i_postorder_2stack(root1);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -45,7 +45,7 @@ void postorder(Node root) {
     cout<<root->val<<" ";
 }
 
-void level_order(Node root) {
+void levelorder(Node root) {
     
     queue<Node> q;
     if(root == NULL) return;
@@ -84,5 +84,49 @@ void i_preorder(Node root) {
             cout<<cur->val<<" ";
         }
     }
+}
+
+void i_inorder(Node root) {
+
+    if(!root) return;
+
+    stack<Node> st;
+
+    Node cur = root;
+
+    while(true) {
+        if(cur != NULL) {
+            st.push(cur);
+            cur = cur->l;
+        }
+        else {
+            if(st.empty()) break;
+            cur = st.top();
+            st.pop();
+            cout<<cur->val<<" ";
+            cur = cur->r;
+        }
+    }
+}
+
+void i_postorder_2stack(Node root) {
+
+    if(!root) return;
+
+    stack<Node> st, res;
+
+    st.push(root);
+
+    Node cur;
+
+    while(!st.empty()) {
+        cur = st.top();
+        st.pop();
+        res.push(cur);
+        if(cur->l != NULL) st.push(cur->l);
+        if(cur->r != NULL) st.push(cur->r);
+
+    }
+    while(!res.empty()) { cout<<res.top()->val<<" "; res.pop(); }
 }
 
