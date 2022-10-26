@@ -130,3 +130,7 @@ void i_postorder_2stack(Node root) {
     while(!res.empty()) { cout<<res.top()->val<<" "; res.pop(); }
 }
 
+void i_postorder_1stack(Node root) {
+    
+        
+}
