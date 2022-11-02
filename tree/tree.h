@@ -172,13 +172,16 @@ void i_postorder_2stack(Node root) {
 }
 
 int is_balanced(Node root) {
-
     if(root == NULL) return 0;
+
     int lh = is_balanced(root->l);
     if(lh == -1) return -1;
+
     int rh = is_balanced(root->r);
     if(rh == -1) return -1;
+
     if(abs(lh-rh)>1) return -1;
-    else return max(lh, rh)+1;
+
+    return 1+max(lh, rh);
 }
 

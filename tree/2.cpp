@@ -54,8 +54,8 @@ int main()
     root3->l->r->l = new node(8);
     // root3->l->r->l->l = new node(9);//node added for disbalance
 
-    if(is_balanced(root3)==-1) cout<<"false\n";
-    else cout<<"true\n";
+    // if(is_balanced(root3)==-1) cout<<"false\n";
+    // else cout<<"true\n";
 
 
 
