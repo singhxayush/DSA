@@ -26,6 +26,7 @@ int main()
     // i_inorder(root1);
     // i_postorder_2stack(root1);
     // int dia = INT_MIN; diameter(root1, dia); cout<<dia<<endl;
+    zig_zag(root1);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,7 +71,7 @@ int main()
 
     // int pathsum = INT_MIN; path_sum(root4, pathsum); cout<<pathsum<<endl;
 
-    cout<<is_identical(root4, root3);
+    // cout<<is_identical(root4, root3);
 
 
 

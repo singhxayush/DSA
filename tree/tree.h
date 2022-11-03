@@ -219,5 +219,28 @@ bool is_identical(Node root1, Node root2) {
 }
 
 void zig_zag(Node root) {
-    
+    queue<Node> q;
+
+    q.push(root);
+
+    int x = 0;
+
+    while(!q.empty()){
+        int n = q.size();
+        vector<int> temp;
+        while(n--) {
+            Node cur = q.front();
+            temp.push_back(cur->val);
+            q.pop();
+
+            if(cur->l != NULL) q.push(cur->l);
+            if(cur->r != NULL) q.push(cur->r);
+        }
+
+        if(x) reverse(temp.begin(), temp.end());
+        for(auto x : temp) cout<<x<<" "; 
+        x^=1;
+    }
+    cout<<"\n";
 }
+
