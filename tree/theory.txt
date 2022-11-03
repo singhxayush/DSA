@@ -101,3 +101,12 @@ Categories
          8
         /
       (9)-> makes tree unbalanced
+
+
+4th tree we are working on (root 4) for maximum path sum
+
+            -10
+            /  \
+           9    20
+               /  \
+              15   7

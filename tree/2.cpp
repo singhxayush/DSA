@@ -15,8 +15,8 @@ int main()
     root1->l->l->r = new node(9);
     root1->l->l->r->l = new node(10);
 
-    // string x1 = "1 2 3 4 5 N 6 N 9 7 8 10";
-    // Node rootx = buildTree(x1);
+    // string r1 = "1 2 3 4 5 N 6 N 9 7 8 10";
+    // Node root1 = buildTree(x1);
 
     // preorder(root1);
     // inorder(root1);
@@ -25,7 +25,7 @@ int main()
     // i_preorder(root1);
     // i_inorder(root1);
     // i_postorder_2stack(root1);
-    int dia = 0; diameter(root1, dia); cout<<dia<<endl;
+    // int dia = 0; diameter(root1, dia); cout<<dia<<endl;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,12 +60,15 @@ int main()
     // if(is_balanced(root3)==-1) cout<<"false\n"; // else cout<<"true\n";
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //// TRREE 4 with root 4 ////
 
+    // string r4 = "-10 9 20 N N 15 7";
+    string r4 = "10 2 -25 20 1 3 4";
+    Node root4 = buildTree(r4);
 
-
-
-
+    int pathsum = 0; path_sum(root4, pathsum); cout<<pathsum<<endl;
 
 
 

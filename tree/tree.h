@@ -185,7 +185,7 @@ int is_balanced(Node root) {
     return 1+max(lh, rh);
 }
 
-int diameter(Node root, int &dia){
+int diameter(Node root, int &dia) {
 
     if(root == NULL) return 0;
 
@@ -196,3 +196,16 @@ int diameter(Node root, int &dia){
     return 1 + max(ll, rl);    
 }
 
+// maximum path sum
+// a path is such that every node will be appear only once in it
+int path_sum(Node root, int &res) {
+
+    if(root == NULL) return 0;
+
+    int lsum = path_sum(root->l, res);
+    int rsum = path_sum(root->r, res);
+    res = max(res, (lsum + rsum + root->val));
+    
+    cout<<"Node :"<<root->val<<" "<<lsum<<" "<<rsum<<" "<<res<<"\n";
+    return (root->val + max(lsum, rsum));
+}
