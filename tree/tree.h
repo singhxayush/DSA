@@ -202,10 +202,22 @@ int path_sum(Node root, int &res) {
 
     if(root == NULL) return 0;
 
-    int lsum = path_sum(root->l, res);
-    int rsum = path_sum(root->r, res);
+    int lsum = max(0, path_sum(root->l, res));
+    int rsum = max(0, path_sum(root->r, res));
     res = max(res, (lsum + rsum + root->val));
     
-    cout<<"Node :"<<root->val<<" "<<lsum<<" "<<rsum<<" "<<res<<"\n";
+    // cout<<"Node :"<<root->val<<" "<<lsum<<" "<<rsum<<" "<<res<<"\n";
     return (root->val + max(lsum, rsum));
+}
+
+bool is_identical(Node root1, Node root2) {
+    if(root1 == NULL || root2 == NULL) return (root1 == root2);
+
+    return (root1->val == root2->val) &&
+            is_identical(root1->l, root2->l) &&
+            is_identical(root1->r, root2->r);
+}
+
+void zig_zag(Node root) {
+    
 }

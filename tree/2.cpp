@@ -25,7 +25,7 @@ int main()
     // i_preorder(root1);
     // i_inorder(root1);
     // i_postorder_2stack(root1);
-    // int dia = 0; diameter(root1, dia); cout<<dia<<endl;
+    // int dia = INT_MIN; diameter(root1, dia); cout<<dia<<endl;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -68,9 +68,9 @@ int main()
     string r4 = "10 2 -25 20 1 3 4";
     Node root4 = buildTree(r4);
 
-    int pathsum = 0; path_sum(root4, pathsum); cout<<pathsum<<endl;
+    // int pathsum = INT_MIN; path_sum(root4, pathsum); cout<<pathsum<<endl;
 
-
+    cout<<is_identical(root4, root3);
 
 
 

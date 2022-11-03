@@ -105,8 +105,9 @@ Categories
 
 4th tree we are working on (root 4) for maximum path sum
 
-            -10
-            /  \
-           9    20
-               /  \
-              15   7
+            10
+          /    \
+         2     -25
+        / \    /  \
+       20  1  3    4
+
