@@ -185,3 +185,14 @@ int is_balanced(Node root) {
     return 1+max(lh, rh);
 }
 
+int diameter(Node root, int &dia){
+
+    if(root == NULL) return 0;
+
+    int ll = diameter(root->l, dia); // left length
+    int rl = diameter(root->r, dia); // right length
+    dia = max(dia, rl+ll);
+
+    return 1 + max(ll, rl);    
+}
+

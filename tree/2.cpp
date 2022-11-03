@@ -17,6 +17,7 @@ int main()
 
     // string x1 = "1 2 3 4 5 N 6 N 9 7 8 10";
     // Node rootx = buildTree(x1);
+
     // preorder(root1);
     // inorder(root1);
     // postorder(root1);
@@ -24,6 +25,8 @@ int main()
     // i_preorder(root1);
     // i_inorder(root1);
     // i_postorder_2stack(root1);
+    int dia = 0; diameter(root1, dia); cout<<dia<<endl;
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -52,10 +55,9 @@ int main()
     root3->r->l = new node(2);
     root3->r->r = new node(6);
     root3->l->r->l = new node(8);
-    // root3->l->r->l->l = new node(9);//node added for disbalance
+    root3->l->r->l->l = new node(9);//node added for disbalance
 
-    // if(is_balanced(root3)==-1) cout<<"false\n";
-    // else cout<<"true\n";
+    // if(is_balanced(root3)==-1) cout<<"false\n"; // else cout<<"true\n";
 
 
 
