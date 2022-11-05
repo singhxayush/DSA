@@ -71,8 +71,8 @@ int main()
     //// TRREE 4 with root 4 ////
 
     // string r4 = "-10 9 20 N N 15 7";
-    string r4 = "10 2 -25 20 1 3 4";
-    Node root4 = buildTree(r4);
+    // string r4 = "10 2 -25 20 1 3 4";
+    // Node root4 = buildTree(r4);
 
     // int pathsum = INT_MIN; path_sum(root4, pathsum); cout<<pathsum<<endl;
 
@@ -80,7 +80,7 @@ int main()
 
 
 
-
+    cout<<IsSymmetric(root1);
 
 
 

@@ -423,3 +423,15 @@ void right_view(Node root) {
     for(auto x : m) cout<<x.second<<" ";
 }
 
+
+// Check if Symmetric
+bool IsSymmetric(Node root) {
+    return (root == NULL || solve_IsSymmetric(root->l, root->r));
+}
+
+bool solve_IsSymmetric(Node left, Node right) {
+
+    if(!left || !right) return left==right;
+    if(left->val != right->val) return false;
+    return (solve_IsSymmetric(left->l, right->r) && solve_IsSymmetric(left->r, right->l));
+}
