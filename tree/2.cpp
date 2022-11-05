@@ -29,7 +29,8 @@ int main()
     // zig_zag(root1);
     // boundary_traversal_anticlockwise(root1);
     // vertical_order(root1);
-    top_view(root1);
+    // top_view(root1);
+    bottom_view(root1);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
