@@ -327,7 +327,7 @@ void vertical_order(Node root) {
     }
     for(auto x : v) cout<<x<<" ";
     // for(int i=0; i<res.size(); i++) {
-    //     for(int j=0; j<res[i].size(); j++) cout<<res[i][j]<<" ";
+    //      for(int j=0; j<res[i].size(); j++) cout<<res[i][j]<<" ";
     //     cout<<"\n";
     // }
 }
@@ -354,7 +354,6 @@ void top_view(Node root) {
     for(auto x : m) cout<<x.second<<" ";
 }
 
-
 void bottom_view(Node root) {
 
     if(root == NULL) return;
@@ -376,3 +375,51 @@ void bottom_view(Node root) {
 
     for(auto x : m) cout<<x.second<<" ";
 }
+
+// Right view of binary Tree
+// Basically u r storing the right most node at every level
+// to save space u do right to left level order traversal
+void right_view(Node root) {
+
+    if(root == NULL) return;
+    queue<pair<Node, int>> q;
+    q.push({root, 0});
+    map<int, int> m;
+
+    while(!q.empty()) {
+        auto cur = q.front();
+        q.pop();
+        Node temp = cur.first;
+        int y = cur.second;
+
+        if(m.find(y) == m.end()) m[y] = temp->val;
+
+        if(temp->r) q.push({temp->r, y+1});
+        if(temp->l) q.push({temp->l, y+1});
+    }
+
+    for(auto x : m) cout<<x.second<<" ";
+}
+
+void right_view(Node root) {
+
+    if(root == NULL) return;
+    queue<pair<Node, int>> q;
+    q.push({root, 0});
+    map<int, int> m;
+
+    while(!q.empty()) {
+        auto cur = q.front();
+        q.pop();
+        Node temp = cur.first;
+        int y = cur.second;
+
+        if(m.find(y) == m.end()) m[y] = temp->val;
+
+        if(temp->l) q.push({temp->l, y+1});
+        if(temp->r) q.push({temp->r, y+1});
+    }
+
+    for(auto x : m) cout<<x.second<<" ";
+}
+

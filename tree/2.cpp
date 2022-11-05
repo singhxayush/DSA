@@ -30,7 +30,8 @@ int main()
     // boundary_traversal_anticlockwise(root1);
     // vertical_order(root1);
     // top_view(root1);
-    bottom_view(root1);
+    // bottom_view(root1);
+    // right_view(root1);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
