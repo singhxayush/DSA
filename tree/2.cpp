@@ -26,7 +26,10 @@ int main()
     // i_inorder(root1);
     // i_postorder_2stack(root1);
     // int dia = INT_MIN; diameter(root1, dia); cout<<dia<<endl;
-    zig_zag(root1);
+    // zig_zag(root1);
+    // boundary_traversal_anticlockwise(root1);
+    // vertical_order(root1);
+    top_view(root1);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////

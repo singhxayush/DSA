@@ -244,3 +244,135 @@ void zig_zag(Node root) {
     cout<<"\n";
 }
 
+
+// Boundary traversal AntiClockWise
+
+bool is_leaf(Node root) {
+    if(root->l == NULL && root->r == NULL) return true;
+    return false;
+}
+void left_boundary(Node root, vector<int> &v) {
+    Node cur = root->l;
+    while(cur) {
+        if(!is_leaf(cur)) v.push_back(cur->val);
+        if(cur->l) cur = cur->l;
+        else cur = cur->r;
+    }
+}
+void leaf_boundary(Node root, vector<int> &v) {
+    if(is_leaf(root)) {
+        v.push_back(root->val);
+        return;
+    }
+    if(root->l) leaf_boundary(root->l, v);
+    if(root->r) leaf_boundary(root->r, v);
+}
+void right_boundary(Node root, vector<int> &v) {
+    Node cur = root->r;
+    stack<int> st;
+    while(cur) {
+        if(!is_leaf(cur)) st.push(cur->val);
+        if(cur->r) cur = cur->r;
+        else cur = cur->l;
+    }
+    while(!st.empty()){
+        v.push_back(st.top());
+        st.pop();
+    }
+}
+void boundary_traversal_anticlockwise(Node root) {
+
+    if(root == NULL) return;
+    vector<int> res;
+    res.push_back(root->val);
+    left_boundary(root, res);
+    if(!is_leaf(root)) leaf_boundary(root, res);
+    right_boundary(root, res);
+    for(auto x : res) cout<<x<<" ";
+}
+
+
+//vertical order traversal
+// same level nodes must be in sorted order
+// we do level order traversal with root, x level and y level parameters as tuple udner queue
+// we maintain a data structure of from map<int, map<int, multiset<int>>>
+//                                           |        |             |
+//                  stores level wise : verticle   horizontal     values
+
+void vertical_order(Node root) {
+
+    map<int, map<int, multiset<int>>> m;
+
+    queue<pair<Node, pair<int, int>>> q;
+    q.push({root, {0, 0}});
+
+    while(!q.empty()) {
+
+        auto cur = q.front();
+        q.pop();
+        int x = cur.second.first;
+        int y = cur.second.second;
+        m[x][y].insert((cur.first)->val);
+
+        if(cur.first->l) q.push({(cur.first)->l, {x-1, y+1}});
+        if(cur.first->r) q.push({(cur.first)->r, {x+1, y+1}});
+    }
+
+    // vector<vector<int>> res;
+
+    vector<int> v;
+    for(auto x1 : m) {
+        for(auto x2 : x1.second) v.insert(v.end(), x2.second.begin(), x2.second.end());
+        // res.push_back(v);
+    }
+    for(auto x : v) cout<<x<<" ";
+    // for(int i=0; i<res.size(); i++) {
+    //     for(int j=0; j<res[i].size(); j++) cout<<res[i][j]<<" ";
+    //     cout<<"\n";
+    // }
+}
+
+void top_view(Node root) {
+
+    if(root == NULL) return;
+    queue<pair<Node, int>> q;
+    map<int, int> m;
+    q.push({root, 0});
+
+    while(!q.empty()) {
+        auto cur = q.front();
+        q.pop();
+        int x = cur.second;
+        Node temp = cur.first;
+
+        if(m.find(x)==m.end()) m[x] = temp->val;
+
+        if(temp->l) q.push({temp->l, x-1});
+        if(temp->r) q.push({temp->r, x+1});
+    }
+
+    for(auto x : m) cout<<x.second<<" ";
+}
+
+
+void bottom_view(Node root) {
+
+    if(root == NULL) return;
+    queue<pair<Node, int>> q;
+    map<int, int> m;
+    q.push({root, 0});
+
+    while(!q.empty()) {
+        auto cur = q.front();
+        q.pop();
+        int x = cur.second;
+        Node temp = cur.first;
+
+        m[x] = temp->val;
+
+        if(temp->l) q.push({temp->l, x-1});
+        if(temp->r) q.push({temp->r, x+1});
+    }
+
+    for(auto x : m) cout<<x.second<<" ";
+}
