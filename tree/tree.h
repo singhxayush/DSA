@@ -425,7 +425,6 @@ void left_view(Node root) {
 
 
 // Check if Symmetric
-
 bool solve_IsSymmetric(Node left, Node right) {
     if(!left || !right) return left==right;
     return (left->val == right->val && solve_IsSymmetric(left->l, right->r) && solve_IsSymmetric(left->r, right->l));
@@ -433,3 +432,19 @@ bool solve_IsSymmetric(Node left, Node right) {
 bool IsSymmetric(Node root) {
     return (root == NULL || solve_IsSymmetric(root->l, root->r));
 }
+
+
+// Root to Node path
+bool root_to_node(Node root, int node_val, vector<int> &path) {
+
+    if(!root) return false;
+
+    path.push_back(root->val);
+    if(root->val == node_val) return true;
+
+    if(root_to_node(root->l, node_val, path) || root_to_node(root->r, node_val, path)) return true;
+
+    path.pop_back();
+    return false;
+}
+

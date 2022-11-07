@@ -34,6 +34,7 @@ int main()
     // right_view(root1);
 
 
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
     //// TRREE 2 with root 2 ////
@@ -64,6 +65,7 @@ int main()
     root3->l->r->l->l = new node(9);//node added for disbalance
 
     // if(is_balanced(root3)==-1) cout<<"false\n"; // else cout<<"true\n";
+    vector<int> path; if(root_to_node(root3, 9, path)) for(auto x : path) cout<<x<<" "; else cout<<"false";
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
