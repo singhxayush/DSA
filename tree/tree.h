@@ -448,3 +448,16 @@ bool root_to_node(Node root, int node_val, vector<int> &path) {
     return false;
 }
 
+
+// Lowest common ancestor - the ancestor at exists at the deepest level
+Node lca(Node root, Node root1, Node root2) {
+
+    if(root == NULL || root == root1 || root == root2) return root;
+
+    Node left = lca(root->l, root1, root2);
+    Node right = lca(root->r, root1, root2);
+
+    if(!left) return right;
+    else if(!right) return left;
+    else return root;
+}

@@ -8,11 +8,11 @@ int main()
     root1->l = new node(2);
     root1->r = new node(3);
     root1->l->l = new node(4);
-    root1->l->r = new node(5);
+    Node y = root1->l->r = new node(5);
     root1->r->r = new node(6);
     root1->r->r->l = new node(7);
     root1->r->r->r = new node(8);
-    root1->l->l->r = new node(9);
+    Node x = root1->l->l->r = new node(9);
     root1->l->l->r->l = new node(10);
 
     // string r1 = "1 2 3 4 5 N 6 N 9 7 8 10";
@@ -32,8 +32,7 @@ int main()
     // top_view(root1);
     // bottom_view(root1);
     // right_view(root1);
-
-
+    cout<<lca(root1, x, y)->val<<"\n";
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -65,7 +64,7 @@ int main()
     root3->l->r->l->l = new node(9);//node added for disbalance
 
     // if(is_balanced(root3)==-1) cout<<"false\n"; // else cout<<"true\n";
-    vector<int> path; if(root_to_node(root3, 9, path)) for(auto x : path) cout<<x<<" "; else cout<<"false";
+    // vector<int> path; if(root_to_node(root3, 9, path)) for(auto x : path) cout<<x<<" "; else cout<<"false";
 
 
 /////////////////////////////////////////////////////////////////////////////////////////

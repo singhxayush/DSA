@@ -79,6 +79,7 @@ Categories
       10
 
 
+
 2nd tree we are working on (root 2) | Satisfies Children sum property |
 
             5
@@ -103,6 +104,7 @@ Categories
       (9)-> makes tree unbalanced
 
 
+
 4th tree we are working on (root 4) for maximum path sum
 
             10
@@ -110,6 +112,7 @@ Categories
          2     -25
         / \    /  \
        20  1  3    4
+
 
 
 5th tree we are working on (root 5) to check Symmetricity
