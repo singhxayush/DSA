@@ -70,13 +70,13 @@ Categories
 
             1
           /   \
-         2     3
+         2     3 -> target node(p) to check all nodes at dist. k from here
         / \     \
        4   5     6
         \       / \
          9     7   8
-        /
-      10
+        /     / \   \
+      10     11 12  13
 
 
 

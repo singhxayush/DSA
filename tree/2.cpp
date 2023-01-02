@@ -4,16 +4,19 @@ int main()
 {
     //// TREE 1 with root 1 ////
 
-    Node root1 = new node(1);
-    root1->l = new node(2);
-    root1->r = new node(3);
-    root1->l->l = new node(4);
+    Node     root1 = new node(1);
+             root1->l = new node(2);
+    Node p = root1->r = new node(3);
+             root1->l->l = new node(4);
     Node y = root1->l->r = new node(5);
-    root1->r->r = new node(6);
-    root1->r->r->l = new node(7);
-    root1->r->r->r = new node(8);
+             root1->r->r = new node(6);
+             root1->r->r->l = new node(7);
+             root1->r->r->r = new node(8);
     Node x = root1->l->l->r = new node(9);
-    root1->l->l->r->l = new node(10);
+             root1->r->r->l->l = new node(11);
+             root1->r->r->l->r = new node(13);
+             root1->r->r->r->r = new node(13);
+             root1->l->l->r->l = new node(10);
 
     // string r1 = "1 2 3 4 5 N 6 N 9 7 8 10";
     // Node root1 = buildTree(x1);
@@ -32,7 +35,10 @@ int main()
     // top_view(root1);
     // bottom_view(root1);
     // right_view(root1);
-    cout<<lca(root1, x, y)->val<<"\n";
+    // cout<<lca(root1, x, y)->val<<"\n";
+    // childern_sum_update(root1); levelorder(root1);
+
+    distanceK(root1, p, 3);
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,17 +59,16 @@ int main()
     //// TRREE 3 with root 3 ////
 
     Node root3 = new node(7);
-
     root3->l = new node(4);
     root3->r = new node(5);
     root3->l->l = new node(3);
-    root3->l->r = new node(1);
+    Node temp = root3->l->r = new node(1);
     root3->r->l = new node(2);
     root3->r->r = new node(6);
     root3->l->r->l = new node(8);
-    root3->l->r->l->l = new node(9);//node added for disbalance
+    root3->l->r->l->l = new node(9); // node added for disbalance
 
-    // if(is_balanced(root3)==-1) cout<<"false\n"; // else cout<<"true\n";
+    // if(is_balanced(root3)==-1) cout<<"false\n"; else cout<<"true\n";
     // vector<int> path; if(root_to_node(root3, 9, path)) for(auto x : path) cout<<x<<" "; else cout<<"false";
 
 
@@ -89,18 +94,4 @@ int main()
     // Node root5 = buildTree(r5); cout<<IsSymmetric(root5);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-cout<<"\n";
 }

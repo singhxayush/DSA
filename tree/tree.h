@@ -461,3 +461,121 @@ Node lca(Node root, Node root1, Node root2) {
     else if(!right) return left;
     else return root;
 }
+
+
+////// INCOMPLETE //////
+// Maximum width of a binary tree - it is the maximum no of nodes at level
+// int max_width(Node root) {
+
+
+// }
+
+// Children Sum Property - update the tree
+void childern_sum_update(Node root) {
+
+    if(root == NULL) return;
+    int child = 0;
+    if(root->l) child += root->l->val;
+    if(root->r) child += root->r->val;
+
+    if(child >= root->val) root->val = child;
+    else {
+        if(root->l) root->l->val = root->val;
+        else if(root->r) root->r->val = root->val;
+    }
+
+    childern_sum_update(root->l);
+    childern_sum_update(root->r);
+
+    int tot = 0;
+
+    if(root->l) tot += root->l->val;
+    if(root->r) tot += root->r->val;
+
+    if(root->l || root->r) root->val = tot;
+}
+
+
+// All nodes at a distance k from a given target node
+// Iterative soln
+// 2 steps
+// step 1 : create parent pointer for every node using level order traversal
+// step 2 : do dfs traversal on the tree in 3 directions.. l, r and up. starting from Target node
+
+void markParent(Node root, unordered_map<Node, Node> &m)
+{
+    queue<Node> q;
+    q.push(root);
+
+    while(!q.empty())
+    {
+        int n = q.size();
+
+        for(int i=0; i<n; i++)
+        {
+            Node cur = q.front();
+            q.pop();
+
+            if(cur->l)
+            {
+                m[cur->l] = cur;
+                q.push(cur->l);
+            }
+            if(cur->r)
+            {
+                m[cur->r] = cur;
+                q.push(cur->r);
+            }
+        }
+    }
+}
+void distanceK(Node root, Node target, int k)
+{
+    queue<Node> q;
+    q.push(target);
+
+    unordered_set<Node> visited;
+    visited.insert(target);
+
+    unordered_map<Node, Node> parentOf;
+    markParent(root, parentOf);
+
+    int cur_dist = 0;
+
+    while(!q.empty())
+    {
+        int n = q.size();
+        if(cur_dist++ == k)
+        {
+            while(!q.empty())
+            {
+                cout<<q.front()->val<<" ";
+                q.pop();
+            }
+            return;
+        }
+        for(int i=0; i<n; i++)
+        {
+            Node cur = q.front();
+            q.pop();
+
+            if(cur->l && visited.find(cur->l)==visited.end())
+            {
+                q.push(cur->l);
+                visited.insert(cur->l);
+            }
+
+            if(cur->r && visited.find(cur->r)==visited.end())
+            {
+                q.push(cur->r);
+                visited.insert(cur->r);
+            }
+
+            if(parentOf[cur] && visited.find(parentOf[cur])==visited.end())
+            {
+                q.push(parentOf[cur]);
+                visited.insert(parentOf[cur]);
+            }
+        }
+    }
+}
