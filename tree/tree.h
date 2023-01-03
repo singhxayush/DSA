@@ -579,3 +579,46 @@ void distanceK(Node root, Node target, int k)
         }
     }
 }
+
+int TimeToBurn(Node root, Node target)
+{
+    unordered_map<Node, Node> parentOf;
+    markParent(root, parentOf);
+
+    unordered_map<Node, bool> burned;
+    burned[target] = 1;
+
+    queue<Node> q;
+    q.push(target);
+    int res = 0;
+    
+    while(!q.empty())
+    {
+        int n = q.size();
+        res++;
+        for(int i=0; i<n; i++)
+        {
+            Node cur = q.front();
+            q.pop();
+
+            if(cur->l && !burned[cur->l])
+            {
+                burned[cur->l] = 1;
+                q.push(cur->l);
+            }
+
+            if(cur->r && !burned[cur->r])
+            {
+                burned[cur->r] = 1;
+                q.push(cur->r);
+            }
+
+            if(parentOf[cur] && !burned[parentOf[cur]])
+            {
+                burned[parentOf[cur]] = 1;
+                q.push(parentOf[cur]);
+            }
+        }
+    }
+    return --res;
+}
