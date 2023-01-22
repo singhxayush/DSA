@@ -1,0 +1,14 @@
+Recursive construct -> Memoize || Top-Down(if needed)
+
+Problem variations!
+
+    #knapsack -> return max profit
+    
+        - subset sum
+        - equal sum partition
+        - count of subset sum
+        - minimum subset sum problem
+        - target sum
+        - number of subset and given difference
+    
+    
