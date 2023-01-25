@@ -16,36 +16,38 @@ typedef  long double ld;
 struct node
 {
     int val;
-    node * l;
-    node * r;
+    node * left;
+    node * right;
     node(int x = 0)
     {
         val = x;
-        l = r = NULL;
+        left = right = NULL;
     }
 };
 
 typedef node * Node;
 
+
+// _________________________________Traversals___________________________________
 void preorder(Node root) {
 
     if(root == NULL) return;
     cout<<root->val<<" ";
-    preorder(root->l);
-    preorder(root->r);
+    preorder(root->left);
+    preorder(root->right);
 }
 void inorder(Node root) {
 
     if(root == NULL) return;
-    inorder(root->l);
+    inorder(root->left);
     cout<<root->val<<" ";
-    inorder(root->r);
+    inorder(root->right);
 }
 void postorder(Node root) {
 
     if(root == NULL) return;
-    postorder(root->l);
-    postorder(root->r);
+    postorder(root->left);
+    postorder(root->right);
     cout<<root->val<<" ";
 }
 void levelorder(Node root) {
@@ -61,36 +63,58 @@ void levelorder(Node root) {
         for(int i=0; i<n; i++){
             Node cur = q.front();
             q.pop();
-            if(cur->l != NULL) q.push(cur->l);
-            if(cur->r != NULL) q.push(cur->r);
-            cout<<cur->val<<"{"<<cur->range.first<<", "<<cur->range.second<<"}"<<" | ";
+            if(cur->left != NULL) q.push(cur->left);
+            if(cur->right != NULL) q.push(cur->right);
+            cout<<cur->val<<" ";
+            // cout<<cur->val<<"{"<<cur->range.first<<", "<<cur->range.second<<"}"<<" | ";
         }
         cout<<"\n";
     }
 }
+// _____________________________________________________________________________
 
 
 
-Node build_st(vector<int> a, int left, int right)
+int mid(int l, int r) { return (l+r)>>1; }
+
+Node rootnode;
+int size;
+
+Node build_st(vector<int> a, int l, int r)
 {
-    if(left == right) return new node(a[left]);
+    if(l==r) return new node(a[l]);
 
-    int mid = (left+right)/2;
+    int m = mid(l, r);
+
+    // post order traversal
     Node cur = new node();
-    cur->l = build_st(a, left, mid);
-    cur->r = build_st(a, mid+1, right);
-    cur->val = min(cur->l->val, cur->r->val);
-    cur->val = (cur->l->val + cur->r->val);
+    cur->left = build_st(a, l, m);
+    cur->right = build_st(a, m+1, r);
+
+    // type of seg-tree //
+    cur->val = cur->left->val + cur->right->val;
 
     return cur;
 }
 
-int querySt(Node root, int lq, int rq, int ls, int rs)
+Node build_st(vector<int> a)
+{
+    size = a.size();
+    rootnode = build_st(a, 0, size-1);
+    return root;
+}
+
+int query(Node root, int lq, int rq, int ls, int rs)
 {
     if(ls > rq || rs < lq) return 0;
     if(ls <= lq && rs >= rq) return root->val;
-    mid = (ls + rs)>>1;
-    return querySt(root->l, lq, rq, ls, mid) + querySt(root->r, lq, rq, mid+1, rs);
+    int mid = (ls + rs)>>1;
+    return query(root->left, lq, rq, ls, mid) + query(root->right, lq, rq, mid+1, rs);
+}
+
+int query(Node root, int l, int r)
+{
+    return query(root, l, r, 0, )
 }
 
 
@@ -99,9 +123,9 @@ int querySt(Node root, int lq, int rq, int ls, int rs)
 //     public:
 
 //         int val;
-//         Stree *l, *r;
-//         ~Stree(int x){ l = r = NULL; val = x; };
-//         // ~Stree(){ l = r = NULL; };
+//         Stree *left, *right;
+//         ~Stree(int x){ left = right = NULL; val = x; };
+//         // ~Stree(){ left = right = NULL; };
 
 //         void construct_st(Stree * root, int ls, rs)
 //         {
@@ -112,10 +136,10 @@ int querySt(Node root, int lq, int rq, int ls, int rs)
 //             }
 //             int mid = (ls + rs) >> 1;
 
-//             if(root->l == NULL) 
+//             if(root->left == NULL) 
 
-//             construct_st(root->l, ls, mid);
-//             construct_st(root->r, mid + 1, rs);
+//             construct_st(root->left, ls, mid);
+//             construct_st(root->right, mid + 1, rs);
 //             root->data = 
 //         }
 //         void construct_st(Stree * root, vector<int> a)
