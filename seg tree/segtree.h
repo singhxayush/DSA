@@ -70,7 +70,7 @@ void levelorder(Node root) {
 
 
 Node rootnode;
-int size;
+int N;
 
 int mid(int l, int r) { return (l+r)>>1; }
 
@@ -93,8 +93,8 @@ Node build_st(vector<int> a, int l, int r)
 
 void build_st(vector<int> a)
 {
-    size = a.size();
-    rootnode = build_st(a, 0, size-1);
+    N = a.size();
+    rootnode = build_st(a, 0, N-1);
 }
 
 int query(Node root, int lq, int rq, int ls, int rs)
@@ -105,10 +105,7 @@ int query(Node root, int lq, int rq, int ls, int rs)
     return query(root->left, lq, rq, ls, mid) + query(root->right, lq, rq, mid+1, rs);
 }
 
-int query(Node root, int l, int r)
-{
-    return query(root, l, r, 0, )
-}
+int query(int l, int r) { return query(rootnode, l, r, 0, N-1); }
 
 
 // class Stree
