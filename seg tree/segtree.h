@@ -3,16 +3,9 @@ using namespace std;
 
 typedef  long long   ll;
 typedef  long double ld;
-#define  all(x) x.begin(), x.end()
-#define  rall(x) x.rbegin(), x.rend()
-#define  testcases int tt; cin>>tt; while(tt--)
-
 #define  dbg(x) cout<<'d'<<'b'<<'g'<<'-'<<'>'<<x<<endl;
-#define  pr(x) cout<<x<<endl;
-#define  pr2(x, y) cout<<x<<' '<<y<<endl;
-#define  pr3(x, y, z) cout<<x<<' '<<y<<' '<<z<<endl;
 
-// Structure implementaion of tree
+// Structure implementaion of SegTree
 struct node
 {
     int val;
@@ -75,10 +68,11 @@ void levelorder(Node root) {
 
 
 
-int mid(int l, int r) { return (l+r)>>1; }
 
 Node rootnode;
 int size;
+
+int mid(int l, int r) { return (l+r)>>1; }
 
 Node build_st(vector<int> a, int l, int r)
 {
@@ -97,11 +91,10 @@ Node build_st(vector<int> a, int l, int r)
     return cur;
 }
 
-Node build_st(vector<int> a)
+void build_st(vector<int> a)
 {
     size = a.size();
     rootnode = build_st(a, 0, size-1);
-    return root;
 }
 
 int query(Node root, int lq, int rq, int ls, int rs)
