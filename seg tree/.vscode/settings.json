@@ -32,5 +32,23 @@
     "**/.*/**",
     "**/.vscode",
     "**/.vscode/**"
-  ]
+  ],
+  "files.associations": {
+    "*.tcc": "cpp",
+    "bitset": "cpp",
+    "chrono": "cpp",
+    "coroutine": "cpp",
+    "any": "cpp",
+    "functional": "cpp",
+    "istream": "cpp",
+    "mutex": "cpp",
+    "new": "cpp",
+    "numeric": "cpp",
+    "ostream": "cpp",
+    "ranges": "cpp",
+    "streambuf": "cpp",
+    "tuple": "cpp",
+    "variant": "cpp",
+    "thread": "cpp"
+  }
 }
