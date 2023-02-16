@@ -38,7 +38,7 @@ int main()
     // cout<<lca(root1, x, y)->val<<"\n";
     // childern_sum_update(root1); levelorder(root1);
 
-    // distanceK(root1, p, 3);
+    distanceK(root1, p, 3);
     // cout<<TimeToBurn(root1, p=);
 
 //////////////////////////////////////////////////////////////////////////////////////////

@@ -245,6 +245,7 @@ void zig_zag(Node root) {
 }
 
 
+
 // Boundary traversal AntiClockWise
 
 bool is_leaf(Node root) {
@@ -622,3 +623,8 @@ int TimeToBurn(Node root, Node target)
     }
     return --res;
 }
+
+
+
+///////  B S T  ///////
+
