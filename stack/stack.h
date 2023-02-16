@@ -267,3 +267,9 @@ void rain_water_trapping(vector<int> a)
     for(int i=0; i<n; i++) res += min(l[i], r[i])-a[i];
     cout<<"total water stored : "<<res<<"\n";
 }
+
+
+void min_stack_extra_space(vector<int> a)
+{
+    
+}

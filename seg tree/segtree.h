@@ -74,7 +74,7 @@ int N;
 
 int mid(int l, int r) { return (l+r)>>1; }
 
-Node build_st(vector<int> a, int l, int r)
+Node build_st(vector<int> &a, int l, int r)
 {
     if(l==r) return new node(a[l]);
 
@@ -91,7 +91,7 @@ Node build_st(vector<int> a, int l, int r)
     return cur;
 }
 
-void build_st(vector<int> a)
+void build_st(vector<int> &a)
 {
     N = a.size();
     rootnode = build_st(a, 0, N-1);
@@ -99,49 +99,30 @@ void build_st(vector<int> a)
 
 int query(Node root, int lq, int rq, int ls, int rs)
 {
-    if(ls > rq || rs < lq) return 0;
-    if(ls <= lq && rs >= rq) return root->val;
-    int mid = (ls + rs)>>1;
-    return query(root->left, lq, rq, ls, mid) + query(root->right, lq, rq, mid+1, rs);
+    if(lq > rs || rq < ls) return 0;
+    if(ls>=lq && rs<=rq) return root->val;
+    int m = mid(ls, rs);
+    return query(root->left, lq, rq, ls, m) + query(root->right, lq, rq, m+1,rs);
 }
 
 int query(int l, int r) { return query(rootnode, l, r, 0, N-1); }
 
 
-// class Stree
-// {
-//     public:
+void update(Node root, int dif, int idx, int ls, int rs)
+{
+    if(idx < ls || idx > rs) return;
+    
+    if(ls == rs && ls == idx)
+    {
+        root->val += dif;
+        return;
+    }
 
-//         int val;
-//         Stree *left, *right;
-//         ~Stree(int x){ left = right = NULL; val = x; };
-//         // ~Stree(){ left = right = NULL; };
+    int m = mid(ls, rs);
+    update(root->left, dif, idx, ls, m);
+    update(root->right, dif, idx, m+1, rs);
 
-//         void construct_st(Stree * root, int ls, rs)
-//         {
-//             if(ls == rs)
-//             {
-//                 root->data = a[ls];
-//                 return;
-//             }
-//             int mid = (ls + rs) >> 1;
+    root->val += dif;
+}
 
-//             if(root->left == NULL) 
-
-//             construct_st(root->left, ls, mid);
-//             construct_st(root->right, mid + 1, rs);
-//             root->data = 
-//         }
-//         void construct_st(Stree * root, vector<int> a)
-//         {
-//             int n = a.size();
-//             int x = ceil(2, log2(n));
-//             int size = pow(2, x);
-//             construct_st(root, 0, size-1);
-//         }
-
-//         int query(Stree * root, int lq, int rq)
-//         {
-
-//         }
-// };
+void update(vector<int> &a, int idx, int val) { update(rootnode, val-a[idx], idx, 0, N-1); }

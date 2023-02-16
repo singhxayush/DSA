@@ -1,12 +1,15 @@
 #include "segtree.h"
 int main()
 {
-    vector<int> a{1, 5, -1, 2, 1, 4, -3, 6, 2, 5};
+    // vector<int> a{1, 5, -1, 2, 1, 4, -3, 6, 2, 5};
+    vector<int> a{3, 2, 4, 5, 1, 1, 5, 3};
     build_st(a);
+    
     levelorder(rootnode);
+    cout<<query(2-1, 4-1)<<"\n";
 
-    // int sum = querySt(root, 1, 1, 0, a.size()-1); cout<<sum<<"\n";
+    // update(a, 2, 1);
+    // levelorder(rootnode);
+    // cout<<query(0, 2)<<"\n";
 
-    // Stree * st = new Stree();
-    // st->construct_st(st, a);
 }

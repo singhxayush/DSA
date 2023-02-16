@@ -304,3 +304,17 @@ void print_NbitBinaryNo_with_1smorethan0s(int n, string s = "", int count1 = 0, 
     print_NbitBinaryNo_with_1smorethan0s(n, s_left, count1+1, count0); // left tree call
     print_NbitBinaryNo_with_1smorethan0s(n, s_right, count1, count0+1); // right tree call
 }
+
+void print_all_permutation_string(string ip, string op="")
+{
+    if(ip.length()==0) cout<<op<<"\n";
+    for(int i=0; i<ip.length(); i++)
+    {
+        string input = ip;
+        string output = op;
+
+        input.erase(input.begin()+i);
+        output += ip[i];
+        print_all_permutation_string(input, output);
+    }
+}

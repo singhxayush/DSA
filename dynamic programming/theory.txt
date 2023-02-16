@@ -1,3 +1,9 @@
+Trends in DP
+
+    Tabulation - Bottom up DP
+    Memoization - Top Down
+    
+
 Recursive construct -> Memoize || Top-Down(if needed)
 
 Problem variations!

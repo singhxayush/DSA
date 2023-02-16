@@ -58,4 +58,6 @@ int main()
 
     // all_balanced_parenthesis(2);
     // print_NbitBinaryNo_with_1smorethan0s(4);
+
+    print_all_permutation_string("aab");
 }

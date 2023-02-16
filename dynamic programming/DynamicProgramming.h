@@ -3,5 +3,10 @@ using namespace std;
 
 int knapsack(int wt[], int val[], int w)
 {
-    int 
+    int n; cin>>n;
+    int a[n];
+
+    for(auto x : a) cin>>x;
+
+    
 }
