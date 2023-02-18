@@ -97,15 +97,15 @@ void build_st(vector<int> &a)
     rootnode = build_st(a, 0, N-1);
 }
 
-int query(Node root, int lq, int rq, int ls, int rs)
+int sum_query(Node root, int lq, int rq, int ls, int rs)
 {
     if(lq > rs || rq < ls) return 0;
     if(ls>=lq && rs<=rq) return root->val;
     int m = mid(ls, rs);
-    return query(root->left, lq, rq, ls, m) + query(root->right, lq, rq, m+1,rs);
+    return sum_query(root->left, lq, rq, ls, m) + sum_query(root->right, lq, rq, m+1,rs);
 }
 
-int query(int l, int r) { return query(rootnode, l, r, 0, N-1); }
+int sum_query(int l, int r) { return sum_query(rootnode, l, r, 0, N-1); }
 
 
 void sum_update(Node root, int dif, int idx, int ls, int rs)

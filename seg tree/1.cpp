@@ -6,7 +6,7 @@ int main()
     build_st(a);
     
     levelorder(rootnode);
-    cout<<query(2-1, 4-1)<<"\n";
+    cout<<sum_query(2-1, 4-1)<<"\n";
 
     // sum_update(a, 2, 1);
     // levelorder(rootnode);
