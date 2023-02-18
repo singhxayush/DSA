@@ -108,7 +108,7 @@ int query(Node root, int lq, int rq, int ls, int rs)
 int query(int l, int r) { return query(rootnode, l, r, 0, N-1); }
 
 
-void update(Node root, int dif, int idx, int ls, int rs)
+void sum_update(Node root, int dif, int idx, int ls, int rs)
 {
     if(idx < ls || idx > rs) return;
     
@@ -119,10 +119,10 @@ void update(Node root, int dif, int idx, int ls, int rs)
     }
 
     int m = mid(ls, rs);
-    update(root->left, dif, idx, ls, m);
-    update(root->right, dif, idx, m+1, rs);
+    sum_update(root->left, dif, idx, ls, m);
+    sum_update(root->right, dif, idx, m+1, rs);
 
     root->val += dif;
 }
 
-void update(vector<int> &a, int idx, int val) { update(rootnode, val-a[idx], idx, 0, N-1); }
+void sum_update(vector<int> &a, int idx, int val) { sum_update(rootnode, val-a[idx], idx, 0, N-1); }

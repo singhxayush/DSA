@@ -8,7 +8,7 @@ int main()
     levelorder(rootnode);
     cout<<query(2-1, 4-1)<<"\n";
 
-    // update(a, 2, 1);
+    // sum_update(a, 2, 1);
     // levelorder(rootnode);
     // cout<<query(0, 2)<<"\n";
 
