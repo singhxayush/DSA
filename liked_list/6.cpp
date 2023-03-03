@@ -1,4 +1,4 @@
-/////// INSERT AT POSITION ///////
+/////// INSERT & DELETE AT POSITION (SLL) ///////
 
 #include<iostream>
 using namespace std;
@@ -6,7 +6,7 @@ using namespace std;
 struct Node
 {
     int data;
-    Node *next;
+    Node * next;
 
     Node(int x)
     {
@@ -47,6 +47,40 @@ Node * insert_at(int pos, Node * head, int data)
 
     return head;
 }
+
+Node * delete_at(int pos, Node * head)
+{
+    if(pos<=0) {
+        cout<<"Invalid position\n";
+        return head;
+    }
+
+    if(head == NULL) return NULL;
+
+    if(pos == 1)
+    {
+        Node * temp = head->next;
+        delete head;
+        return temp;
+    }
+
+    int c = 0;
+    Node * curr = head;
+
+    while(curr != NULL && ++c < pos-1) curr = curr->next;
+
+    if(curr == NULL || curr->next == NULL) {
+        cout<<"Invalid position\n";
+        return head;
+    }
+
+    Node * temp = curr->next->next;
+    delete(curr->next);
+    curr->next = temp;
+
+    return head;
+}
+
 int main()
 {
     Node * head = new Node(10);
@@ -54,7 +88,9 @@ int main()
     head->next->next = new Node(30);
     head->next->next->next = new Node(40);
 
-    head = insert_at(1, head, 5);
-    head = insert_at(3, head, 5);
+    head = insert_at(1, head, 0);
+    head = insert_at(3, head, 15);
+
+    head = delete_at(7, head);
     printlist(head);
 }

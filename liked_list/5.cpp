@@ -43,6 +43,7 @@ Node * delete_end(Node * head){
     itr->next=NULL;
     return head;
 }
+
 int main()
 {
     Node * head = new Node(10);
