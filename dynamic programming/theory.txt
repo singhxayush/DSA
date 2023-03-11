@@ -7,6 +7,16 @@ Trends in DP
 Recursive construct -> Memoize || Top-Down(if needed)
 
 Problem variations!
+- knapsack
+- Unbounded knapsack
+- Fibonacci
+- LCS
+- LIS
+- Kadane's Algo
+- Matrix chain Multiplication
+- DP on trees
+- DP on grid
+- Others
 
     #knapsack -> return max profit
     
