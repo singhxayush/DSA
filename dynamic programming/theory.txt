@@ -1,3 +1,8 @@
+DP identification
+
+    Choices
+    Optimal
+
 Trends in DP
 
     Tabulation - Bottom up DP
@@ -28,3 +33,8 @@ Problem variations!
         - number of subset and given difference
     
     
+    NOTE:
+        1st Create a Recursive implementation
+        2nd convert it to DP using
+            - Memoization
+            - Top-Down(Best approach for DP6)
