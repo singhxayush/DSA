@@ -6,11 +6,29 @@ using namespace std;
 #define pr3(x, y, z) cout<<x<<' '<<y<<' '<<z<<endl;
 
 
-// DP matrix for Memoization 
+// *DP matrix for Memoization 
 int static dp[1000][1000];
 
+void displaydp(int n, int w)
+{
+    cout<<"n : "<<n<<" | ";
+    cout<<"W : "<<w<<"\n\n";
 
-// Normal recursive 0 - 1 Knapsack
+    for(int j=0; j<=w; j++) cout<<"\t"<<j; cout<<"\n\n";
+
+    for(int i=0; i<=n; i++)
+    {
+        cout<<i<<"\t";
+        for(int j=0; j<=w; j++)
+        {
+            cout<<dp[i][j]<<"\t";
+        }
+        cout<<"\n";
+    }
+    cout<<"\n";
+}
+
+// ******* Normal recursive 0 - 1 Knapsack *******
 int knapsack_recursive(int wt[], int val[], int w, int n)
 {
     if(n == 0 || w == 0) return 0;
@@ -23,7 +41,7 @@ int knapsack_recursive(int wt[], int val[], int w, int n)
 }
 
 
-// Knapsack with memoization
+// ******* Knapsack with memoization *******
 // int knapsack_dp_memoization(int wt[], int val[], int w, int n)
 // {
 //     if(n == 0 || w == 0) return 0;
@@ -41,7 +59,7 @@ int knapsack_recursive(int wt[], int val[], int w, int n)
 // }
 
 
-// Iterative bottom Up knapsack
+// ******* Iterative bottom Up knapsack *******
 int knapsack_dp_bottomup(int wt[], int val[], int w, int n)
 {
     for(int i=0; i<=n; i++) dp[i][0] = 0;
@@ -57,7 +75,7 @@ int knapsack_dp_bottomup(int wt[], int val[], int w, int n)
 }
 
 
-////////// Knapsack based std problems(6) //////////
+//******* Knapsack based std problems(6) *******
 
 // SubSet Sum Problem (subset = subseq)
 bool subsetsum(int a[], int n, int sum)
@@ -75,13 +93,13 @@ bool subsetsum(int a[], int n, int sum)
     }
 
     // display
-    for(int i=0; i<=n; i++) { for(int j=0; j<=sum; j++) cout<<dp[i][j]<<" "; cout<<endl; }
+    displaydp(n, sum);
 
     // return 
     return dp[n][sum];
 }
 
-// Count number of subsets for a given subset sum
+// ******* Count number of subsets for a given subset sum *******
 int numofSubsets(int a[], int n, int sum)
 {
     // initialize
@@ -99,10 +117,11 @@ int numofSubsets(int a[], int n, int sum)
 }
 
 
+// *******Equal sum partition - 2 equal subset sum *******
 /*
-  Equal sum partition - 2 equal subset sum - just return T/F
-  tot sum must be even then -> find a subset for 1/2 the total sum
-  if present -> another subset with same sum will must be there -> solved
+  - just returns T/F
+  - tot sum must be even then -> find a subset for 1/2 the total sum
+  - if present -> another subset with same sum will must be there -> solved
 */
 bool equal_partition(int a[], int n)
 {
@@ -110,5 +129,48 @@ bool equal_partition(int a[], int n)
     if(sum%2) return false;
     sum /= 2;
     return subsetsum(a, n, sum);
+}
+
+
+// ******* Minimum subset sum difference *******
+/*
+!PART 1 : Mathematical/Analytical redution
+  - s1 and s2 are two mutually exclusive and exhaustive subsets of a given container
+  - s1 + s2 = total sum = S(constant)
+  - to find min abs(s2 - s1)
+  - s2 = S - s1;
+  - to find min abs(S - 2*s1)
+
+!PART 2 : Code implementation reduction and DP(Bottom Up)
+  - calculate possible s1 vals till S
+  - implement bottom up approach as in subset sum problem
+  - the last row of the matrix(dp) will represent
+  - true(1) for a given possible constrained sum if it exists
+  - iterate through 1/2 them and get the min difference
+  - since other half are mutually exhaustive, it will repeat itself in the difference
+*/
+int minSubsetSumDiff(int a[], int n)
+{
+    // Initialize
+    int sum = accumulate(a, a+n, 0);
+    for(int i=0; i<=n; i++) dp[i][0] = 1;
+    for(int j=1; j<=sum; j++) dp[0][j] = 0;
+
+    // Implementation
+    for(int i=1; i<=n; i++)
+    for(int j=1; j<=sum; j++)
+    {
+        if(a[i-1] <= j) dp[i][j] = dp[i-1][j-a[i-1]] || dp[i-1][j];
+        else dp[i][j] = dp[i-1][j];
+    }
+
+    // display
+    displaydp(n, sum);
+
+    // result + return
+    int res = INT_MAX;
+    for(int j=0; j<=sum; j++) if(dp[n][j])
+    res = min(res, abs(sum-2*j));
+    return res;
 }
 
