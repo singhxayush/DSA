@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define pr(x) cout<<x<<endl;
+#define pr2(x, y) cout<<x<<' '<<y<<endl;
+#define pr3(x, y, z) cout<<x<<' '<<y<<' '<<z<<endl;
+
 
 // DP matrix for Memoization 
 int static dp[1000][1000];
@@ -56,24 +60,55 @@ int knapsack_dp_bottomup(int wt[], int val[], int w, int n)
 ////////// Knapsack based std problems(6) //////////
 
 // SubSet Sum Problem (subset = subseq)
-bool subsetsum(int arr[], int n, int sum)
+bool subsetsum(int a[], int n, int sum)
 {
+    // initialize
     for(int i=0; i<=n; i++) dp[i][0] = 1;
     for(int j=1; j<=sum; j++) dp[0][j] = 0;
 
+    // Implementation
     for(int i=1; i<=n; i++)
     for(int j=1; j<=sum; j++)
     {
-        if(arr[i-1] <= j) dp[i][j] = dp[i-1][j-arr[i-1]] || dp[i-1][j];
+        if(a[i-1] <= j) dp[i][j] = dp[i-1][j-a[i-1]] || dp[i-1][j];
         else dp[i][j] = dp[i-1][j];
     }
 
-    for(int i=0; i<=n; i++)
-    {
-        for(int j=0; j<=sum; j++) cout<<dp[i][j]<<" ";
-        cout<<endl;
-    }
+    // display
+    for(int i=0; i<=n; i++) { for(int j=0; j<=sum; j++) cout<<dp[i][j]<<" "; cout<<endl; }
+
+    // return 
     return dp[n][sum];
 }
 
-// Equal sum partition
+// Count number of subsets for a given subset sum
+int numofSubsets(int a[], int n, int sum)
+{
+    // initialize
+    for(int i=0; i<=n; i++) dp[i][0] = 1;
+    for(int j=1; j<=sum; j++) dp[0][j] = 0;
+
+    // Implementation
+    for(int i=1; i<=n; i++)
+    for(int j=1; j<=sum; j++)
+    if(a[i-1] <= j) dp[i][j] = dp[i-1][j] + dp[i-1][j-a[i-1]];
+    else dp[i][j] = dp[i-1][j];
+
+    // return 
+    return dp[n][sum];
+}
+
+
+/*
+  Equal sum partition - 2 equal subset sum - just return T/F
+  tot sum must be even then -> find a subset for 1/2 the total sum
+  if present -> another subset with same sum will must be there -> solved
+*/
+bool equal_partition(int a[], int n)
+{
+    int sum = accumulate(a, a+n, 0);
+    if(sum%2) return false;
+    sum /= 2;
+    return subsetsum(a, n, sum);
+}
+

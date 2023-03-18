@@ -22,6 +22,9 @@ int main()
     // cout<<knapsack_dp_bottomup(wt, val, w, n)<<"\n";
 
 
-    int arr[7] = {3, 4, 2, 5, 2, 4, 7};
-    cout<<subsetsum(arr, 7, 17)<<"\n";
+    int arr[7] = {3, 4, 3, 5, 2, 2, 7};
+    cout<<subsetsum(arr, 7, 24)<<"\n";
+    // cout<<equal_partition(arr, 7);
+
+    // cout<<numofSubsets(arr, 7, 20);
 }
