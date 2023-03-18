@@ -628,4 +628,3 @@ int TimeToBurn(Node root, Node target)
 
 ///////  B S T  ///////
 
-for(int i=0; i<n; i++);
