@@ -75,9 +75,9 @@ int knapsack_dp_bottomup(int wt[], int val[], int w, int n)
 }
 
 
-//******* Knapsack based std problems(6) *******
+// !Knapsack based std problems(6)
 
-// SubSet Sum Problem (subset = subseq)
+// ******* SubSet Sum Problem (subset = subseq) *******
 bool subsetsum(int a[], int n, int sum)
 {
     // initialize
@@ -123,6 +123,7 @@ int numofSubsets(int a[], int n, int sum)
   - tot sum must be even then -> find a subset for 1/2 the total sum
   - if present -> another subset with same sum will must be there -> solved
 */
+
 bool equal_partition(int a[], int n)
 {
     int sum = accumulate(a, a+n, 0);
@@ -139,7 +140,7 @@ bool equal_partition(int a[], int n)
   - s1 + s2 = total sum = S(constant)
   - to find min abs(s2 - s1)
   - s2 = S - s1;
-  - to find min abs(S - 2*s1)
+  ? now the problem reduces to find min abs(S - 2*s1)
 
 !PART 2 : Code implementation reduction and DP(Bottom Up)
   - calculate possible s1 vals till S
@@ -149,6 +150,7 @@ bool equal_partition(int a[], int n)
   - iterate through 1/2 them and get the min difference
   - since other half are mutually exhaustive, it will repeat itself in the difference
 */
+
 int minSubsetSumDiff(int a[], int n)
 {
     // Initialize
@@ -174,3 +176,30 @@ int minSubsetSumDiff(int a[], int n)
     return res;
 }
 
+
+// ******* Count The Number of Subsets With a Given Difference *******
+/* 
+!PART 1 : break down the complex problem in to simpler one
+  - to fine 2 subset with a given difference
+  - s1 - s2 = C (constant given)
+  - s1 + s2 = S (constant sum of array)
+  - now 2*s1 = C + S
+  - s1 = (C + S)/2
+  ?problem reduces to finding a number of subset with a given sum
+
+!PART 2 : DP(bottom up) implementation
+  - now find the subset with a given sum = (C + S)/2
+  ?implement : numofSubsets(int a[], int n, int sum) function 
+*/
+
+int numofSubset_with_a_givenDifference(int a[], int n, int diff)
+{
+    // Initialize
+    int s = accumulate(a, a+n, 0);
+    int sum = (s + diff)/2;
+    for(int i=0; i<=n; i++) dp[i][0] = 1;
+    for(int j=1; j<=sum; j++) dp[0][j] = 0;
+
+    // numofSubsets funcn Call
+    return numofSubsets(a, n, sum);
+}

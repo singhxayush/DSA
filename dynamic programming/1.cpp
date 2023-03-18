@@ -23,6 +23,13 @@ int main()
     // cout<<subsetsum(arr, 7, 24)<<"\n";
     // cout<<equal_partition(arr, 7)<<"\n";
     // cout<<numofSubsets(arr, 7, 20)<<"\n";
+
     // int arr1[3] = {6, 7, 2};
-    cout<<minSubsetSumDiff(arr, 7)<<"\n";
+    // cout<<minSubsetSumDiff(arr1, 3)<<"\n";
+    // cout<<minSubsetSumDiff(arr, 7)<<"\n";
+
+    int arr2[] = {1, 2, 1, 3};
+    // cout<<numofSubset_with_a_givenDifference(arr2, 4, 3)<<"\n";
+    // cout<<numofSubset_with_a_givenDifference(arr, 7, 3)<<"\n";
+    
 }
