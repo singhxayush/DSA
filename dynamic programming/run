@@ -3,7 +3,12 @@
 clear
 
 read -r file_name < filename
+
 g++ "$file_name.cpp"
 
 ./a.out > op.txt
+# ./a.out < ip.txt > op.txt
+
 # code op.txt
+
+exit

@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define sz(x) (sizeof(x)/sizeof(x[0]))
 #define pr(x) cout<<x<<endl;
 #define pr2(x, y) cout<<x<<' '<<y<<endl;
 #define pr3(x, y, z) cout<<x<<' '<<y<<' '<<z<<endl;
@@ -27,6 +28,7 @@ void displaydp(int n, int w)
     }
     cout<<"\n";
 }
+// ?--------------------------------------|KNAPSACK & PROBLEMS|--------------------------------------------------------------
 
 // ******* Normal recursive 0 - 1 Knapsack *******
 int knapsack_recursive(int wt[], int val[], int w, int n)
@@ -75,8 +77,6 @@ int knapsack_dp_bottomup(int wt[], int val[], int w, int n)
 }
 
 
-// !Knapsack based std problems(6)
-
 // ******* SubSet Sum Problem (subset = subseq) *******
 bool subsetsum(int a[], int n, int sum)
 {
@@ -112,6 +112,9 @@ int numofSubsets(int a[], int n, int sum)
     if(a[i-1] <= j) dp[i][j] = dp[i-1][j] + dp[i-1][j-a[i-1]];
     else dp[i][j] = dp[i-1][j];
 
+    // display
+    displaydp(n, sum);
+
     // return 
     return dp[n][sum];
 }
@@ -123,7 +126,6 @@ int numofSubsets(int a[], int n, int sum)
   - tot sum must be even then -> find a subset for 1/2 the total sum
   - if present -> another subset with same sum will must be there -> solved
 */
-
 bool equal_partition(int a[], int n)
 {
     int sum = accumulate(a, a+n, 0);
@@ -150,7 +152,6 @@ bool equal_partition(int a[], int n)
   - iterate through 1/2 them and get the min difference
   - since other half are mutually exhaustive, it will repeat itself in the difference
 */
-
 int minSubsetSumDiff(int a[], int n)
 {
     // Initialize
@@ -191,7 +192,6 @@ int minSubsetSumDiff(int a[], int n)
   - now find the subset with a given sum = (C + S)/2
   ?implement : numofSubsets(int a[], int n, int sum) function 
 */
-
 int numofSubset_with_a_givenDifference(int a[], int n, int diff)
 {
     // Initialize
@@ -203,3 +203,120 @@ int numofSubset_with_a_givenDifference(int a[], int n, int diff)
     // numofSubsets funcn Call
     return numofSubsets(a, n, sum);
 }
+
+
+int target_sum(int a[], int n, int sum)
+{
+    return numofSubset_with_a_givenDifference(a, n, sum);
+}
+
+// ?--------------------------------------|UNBOUNDED KNAPSACK|--------------------------------------------------------------
+
+/*
+Multuple occurances of a an item is allowed in this form of knapsack!
+if the item as been processed we may take it again in ubounded
+only if the process is accepting, if its rejecting we aint considering it again
+but in bounded once an element has been processed we aint considering it again
+
+*  Problems
+*  - rod cutting
+*  - coin change I
+*  - coin change II
+*  - medium ribbon cut
+*/
+
+
+// ******* Rod cutting Problem *******
+/*
+  given a rod of certain length
+  and 2 arrays of size N, representing lenght and corresponding price of that
+  now divide to maximize profit based on given constraints
+
+  silmilarity with knapsack bounded
+  L -> W
+  len[] -> wt[]
+  price[] -> val[]
+*/
+int maxProfit_by_CuttingRods(int len[], int price[], int n, int L)
+{
+    // initialize
+    for(int i=0; i<=n; i++) dp[i][0] = 0;
+    for(int j=0; j<=L; j++) dp[0][j] = 0;
+
+    // Implementation
+    for(int i=1; i<=n; i++)
+    for(int j=1; j<=L; j++)
+
+    if(len[i-1] <= j) 
+        dp[i][j] = max( price[i-1] + dp[i][j-len[i-1]], dp[i-1][j] );
+    else 
+        dp[i][j] = dp[i-1][j];
+
+    // display
+    displaydp(n, L);
+
+    // return
+    return dp[n][L];
+}
+
+
+// ******* Coin Change I Problem *******
+/*
+  Given an array of coins and a target sum
+  Solve for combination of coin sums to generate the given target
+  with a constraint to find all possible ways(which is basically no constraint)
+*/
+int coinChange(int coins[], int n, int sum)
+{
+    // initialize
+    for(int i=1; i<=n; i++) dp[i][0] = 1;
+    for(int j=0; j<=sum; j++) dp[0][j] = 0;
+
+    // Implementation
+    for(int i=1; i<=n; i++)
+    for(int j=1; j<=sum; j++)
+    if(coins[i-1] <= j) dp[i][j] = dp[i][j-coins[i-1]] + dp[i-1][j];
+    else dp[i][j] = dp[i-1][j];
+
+    // display
+    displaydp(n, sum);
+
+    // return
+    return dp[n][sum];
+}
+
+
+// ******* Coin Change II Problem ******* (NOT COMPLETE YET !!!)
+/*
+  Given an array of coins and a target sum
+  Solve for combination of coin sums to generate the given target
+  with a constraint to solve it in Minimum number of coins
+*/
+int coinChange2(int coins[], int n, int sum)
+{
+    // initialize
+    for(int i=1; i<=n; i++) dp[i][0] = 0;
+    for(int j=0; j<=sum; j++) dp[0][j] = INT_MAX-1;
+    for(int j=1; j<=sum; j++) j%coins[0] ? dp[1][j] = INT_MAX-1 : dp[1][j] = j/coins[0];
+
+    // Implementation
+    for(int i=1; i<=n; i++)
+    for(int j=1; j<=sum; j++)
+
+    if(coins[i-1] <= j)
+        dp[i][j] = min(dp[i][j-coins[j]]+1, dp[i-1][j]);
+    else
+        dp[i][j] = dp[i-1][j];
+
+    // display
+    displaydp(n, sum);
+
+    // return
+    return dp[n][sum];
+}
+
+
+// ?-----------------------------|LONGEST COMMON SUBSEQUENCE - IMPORTANT|--------------------------------------------------------------
+
+// ? MOST VARIATIONS COMES FROM THIS PROBLEM PATTERN - AROUND 15 PATTERNS
+
