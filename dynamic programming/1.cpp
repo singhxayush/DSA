@@ -2,6 +2,8 @@
 
 int main()
 {
+    //------------------|Knapsack|------------------
+
     // int n = 7;
     // int w = 9;
     // int wt[n] = {3, 1, 7, 4, 2, 8, 6};
@@ -34,7 +36,10 @@ int main()
     // cout<<target_sum(arr2, 4, 2);
 
 
-    //------------Unbounded Knapsack------------
+
+
+    //----------------|Unbounded Knapsack|----------------
+
     // int L = 11, n =  5;
     // int len[n] = {1, 3, 5, 7, 8};
     // int price[n] = {2, 6, 3, 4, 6};
@@ -42,9 +47,16 @@ int main()
     // cout<<knapsack_dp_bottomup(len, price, L, n); 
     // cout<<maxProfit_by_CuttingRods(len, price, n, L)<<"\n";
 
-    int coins[6] = {2, 4, 8, 5, 1, 9};
+    // int coins[6] = {2, 4, 8, 5, 1, 9};
     // sort(coins, coins+6);
-    int sum = 3;
+    // int sum = 3;
     // cout<<coinChange(coins, sz(coins), sum);
-    cout<<coinChange2(coins, sz(coins), sum)<<"\n";
+    // cout<<coinChange2(coins, sz(coins), sum)<<"\n";
+
+
+
+
+    //-----------------------|L C S|-----------------------
+
+    
 }

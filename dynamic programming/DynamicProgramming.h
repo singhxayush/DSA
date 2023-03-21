@@ -61,7 +61,7 @@ int knapsack_recursive(int wt[], int val[], int w, int n)
 // }
 
 
-// ******* Iterative bottom Up knapsack *******
+// ******* Iterative Top Down knapsack *******
 int knapsack_dp_bottomup(int wt[], int val[], int w, int n)
 {
     for(int i=0; i<=n; i++) dp[i][0] = 0;
@@ -144,9 +144,9 @@ bool equal_partition(int a[], int n)
   - s2 = S - s1;
   ? now the problem reduces to find min abs(S - 2*s1)
 
-!PART 2 : Code implementation reduction and DP(Bottom Up)
+!PART 2 : Code implementation reduction and DP(Top Down)
   - calculate possible s1 vals till S
-  - implement bottom up approach as in subset sum problem
+  - implement Top Down approach as in subset sum problem
   - the last row of the matrix(dp) will represent
   - true(1) for a given possible constrained sum if it exists
   - iterate through 1/2 them and get the min difference
@@ -188,7 +188,7 @@ int minSubsetSumDiff(int a[], int n)
   - s1 = (C + S)/2
   ?problem reduces to finding a number of subset with a given sum
 
-!PART 2 : DP(bottom up) implementation
+!PART 2 : DP(Top Down) implementation
   - now find the subset with a given sum = (C + S)/2
   ?implement : numofSubsets(int a[], int n, int sum) function 
 */
@@ -228,11 +228,11 @@ but in bounded once an element has been processed we aint considering it again
 
 // ******* Rod cutting Problem *******
 /*
-  given a rod of certain length
+  !given a rod of certain length
   and 2 arrays of size N, representing lenght and corresponding price of that
   now divide to maximize profit based on given constraints
 
-  silmilarity with knapsack bounded
+  !similarity with knapsack bounded
   L -> W
   len[] -> wt[]
   price[] -> val[]
@@ -318,5 +318,36 @@ int coinChange2(int coins[], int n, int sum)
 
 // ?-----------------------------|LONGEST COMMON SUBSEQUENCE - IMPORTANT|--------------------------------------------------------------
 
-// ? MOST VARIATIONS COMES FROM THIS PROBLEM PATTERN - AROUND 15 PATTERNS
+/*
+? MOST VARIATIONS COMES FROM THIS PROBLEM PATTERN - AROUND 15 PATTERNS
 
+*  - LCS(longest common subseq)
+*  - longest common substring
+*  - print lcs
+*  - shortest common super seq
+*  - print scs
+*  - minm no. is insertions and deletions a->b
+*  - largest repeting subseq
+*  - length of largest subseq of A which is a substring in B
+*  - subseq pattern matching
+*  - count how many times A appears as subsequence in B
+*  - largest palindromic subseq
+*  - largest palindromic substring
+*  - count of palindromic substring
+*  - minm no. of deletions in a string to make it a palindrome
+*  - minm no. of insertions in a string to make it a palindrome
+*/
+
+
+
+/*
+  !Problem statement : To Find length of LCS
+  - given 2 stings
+  - s1 = abcdgh
+  - s2 = abedfhr
+  - lcs(s1, s2) = ab..d..h (abdh)
+  - So output = 4
+
+  !Implementing Recursive approach : think of the smallest valid i/p
+  
+*/
