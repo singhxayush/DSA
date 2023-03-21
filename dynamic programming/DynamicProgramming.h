@@ -28,7 +28,7 @@ void displaydp(int n, int w)
     }
     cout<<"\n";
 }
-// ?--------------------------------------|KNAPSACK & PROBLEMS|--------------------------------------------------------------
+// ?---------------------------------------|KNAPSACK & PROBLEMS|--------------------------------------------------------------
 
 // ******* Normal recursive 0 - 1 Knapsack *******
 int knapsack_recursive(int wt[], int val[], int w, int n)
@@ -43,22 +43,24 @@ int knapsack_recursive(int wt[], int val[], int w, int n)
 }
 
 
-// ******* Knapsack with memoization *******
-// int knapsack_dp_memoization(int wt[], int val[], int w, int n)
-// {
-//     if(n == 0 || w == 0) return 0;
+// ******* Knapsack with memoization - Bottom Up *******
+int knapsack_dp_memoization(int wt[], int val[], int w, int n)
+{
+    if(n == 0 || w == 0) return 0;
 
-//     if(dp[n][w] != -1) return dp[n][w];
+    if(dp[n][w] != -1) return dp[n][w];
 
-//     if(wt[n-1]<=w)
-//     {
-//         dp[n][w] = max(
-//             val[n-1] + knapsack_dp_memoization(wt, val, w-wt[n-1], n-1),
-//             knapsack_dp_memoization(wt, val, w, n-1)
-//         );
-//     }
-//     else if(wt[n-1]>w) return knapsack_dp_memoization(wt, val, w, n-1);
-// }
+    if(wt[n-1]<=w)
+    {
+        return dp[n][w] = max(
+            val[n-1] + knapsack_dp_memoization(wt, val, w-wt[n-1], n-1),
+            knapsack_dp_memoization(wt, val, w, n-1)
+        );
+    }
+    else if(wt[n-1]>w) return dp[n][w] = knapsack_dp_memoization(wt, val, w, n-1);
+
+    return 0;
+}
 
 
 // ******* Iterative Top Down knapsack *******
@@ -210,7 +212,7 @@ int target_sum(int a[], int n, int sum)
     return numofSubset_with_a_givenDifference(a, n, sum);
 }
 
-// ?--------------------------------------|UNBOUNDED KNAPSACK|--------------------------------------------------------------
+// ?----------------------------------------|UNBOUNDED KNAPSACK|--------------------------------------------------------------
 
 /*
 Multuple occurances of a an item is allowed in this form of knapsack!
@@ -316,7 +318,7 @@ int coinChange2(int coins[], int n, int sum)
 }
 
 
-// ?-----------------------------|LONGEST COMMON SUBSEQUENCE - IMPORTANT|--------------------------------------------------------------
+// ?-------------------------------|LONGEST COMMON SUBSEQUENCE - IMPORTANT|--------------------------------------------------------------
 
 /*
 ? MOST VARIATIONS COMES FROM THIS PROBLEM PATTERN - AROUND 15 PATTERNS
@@ -339,7 +341,7 @@ int coinChange2(int coins[], int n, int sum)
 */
 
 
-
+//* Recursive LCM(brute force)
 /*
   !Problem statement : To Find length of LCS
   - given 2 stings
@@ -349,5 +351,39 @@ int coinChange2(int coins[], int n, int sum)
   - So output = 4
 
   !Implementing Recursive approach : think of the smallest valid i/p
-  
+  steps :
+  - base condtn
+  - choice diag
+  - IP - small
 */
+int LCS_recursive(string s1, string s2, int n, int m)
+{
+    // Base
+    if(!n || !m) return 0;
+
+    // choice making recursive call
+    if(s1[n-1] == s2[m-1]) return
+        1 + LCS_recursive(s1, s2, n-1, m-1);
+    else return
+        max( LCS_recursive(s1, s2, n, m-1), LCS_recursive(s1, s2, n-1, m) );
+}
+
+
+//* Memoization of LCS
+// since recurive calls have sub problems, now we approach with bottom up(memoization)
+int LCS_bottomUp(string s1, string s2, int n, int m)
+{
+    // Base
+    if(!n || !m) return 0;
+
+    // choice makinng recursion and DP sub problem
+    if(dp[n][m] != -1) return dp[n][m];
+
+    if(s1[n-1] == s2[m-1]) return
+        dp[n][m] = 1 + LCS_bottomUp(s1, s2, n-1, m-1);
+    else return
+        dp[n][m] = max( LCS_bottomUp(s1, s2, n, m-1), LCS_bottomUp(s1, s2, n-1, m) );
+}
+
+
+//* Top Down LCS

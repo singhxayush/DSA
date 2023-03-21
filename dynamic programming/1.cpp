@@ -2,25 +2,27 @@
 
 int main()
 {
-    //------------------|Knapsack|------------------
+    //*------------------|Knapsack|------------------
 
-    // int n = 7;
-    // int w = 9;
-    // int wt[n] = {3, 1, 7, 4, 2, 8, 6};
-    // int val[n] = {1, 4, 9, 3, 10, 4, 6};
+    int n = 7;
+    int w = 9;
+    int wt[n] = {3, 1, 7, 4, 2, 8, 6};
+    int val[n] = {1, 4, 9, 3, 10, 4, 6};
 
-    // Normal recursive Knapsack - Brute force
+    ////? Normal recursive Knapsack - Brute force
     // cout<<knapsack_recursive(wt, val, w, n)<<"\n";
 
-    // Recursive memoization Knapsack
-    // memset(dp_knapsack, -1, size/of(dp_knapsack));
+    ////? Recursive memoization Knapsack
+    // memset(dp, -1, sizeof(dp));
     // knapsack_dp_memoization(wt, val, w, n);
-    // cout<<dp_knapsack[n][w]<<"\n";
+    // displaydp(n, w);
+    // cout<<dp[n][w]<<"\n";
 
-    // Iterative bottom Up knapsack
+    ////? Iterative bottom Up knapsack
     // cout<<knapsack_dp_bottomup(wt, val, w, n)<<"\n";
 
 
+    ////? Subset Sum problems
     // int arr[7] = {3, 4, 3, 5, 2, 1, 7};
     // cout<<subsetsum(arr, 7, 24)<<"\n";
     // cout<<equal_partition(arr, 7)<<"\n";
@@ -38,12 +40,12 @@ int main()
 
 
 
-    //----------------|Unbounded Knapsack|----------------
+    //*----------------|Unbounded Knapsack|----------------
 
+    ////? Rod cutting and coin change problem
     // int L = 11, n =  5;
     // int len[n] = {1, 3, 5, 7, 8};
     // int price[n] = {2, 6, 3, 4, 6};
-
     // cout<<knapsack_dp_bottomup(len, price, L, n); 
     // cout<<maxProfit_by_CuttingRods(len, price, n, L)<<"\n";
 
@@ -56,7 +58,23 @@ int main()
 
 
 
-    //-----------------------|L C S|-----------------------
+    //*-----------------------|L C S|-----------------------
+    
+    //? LCS RECURSVE
+    string s1 = "abcdgh";
+    string s2 = "abedfhr";
+
+    // s1 = "abcde";
+    // s2 = "pqrsc";
+
+    // cout<<"len(LCS) of "<<s1<<" & "<<s2<<" : "
+    // <<LCS_recursive(s1, s2, s1.length(), s2.length());
+
+    ////? LCS Bottom Up(Memoization)
+    memset(dp, -1, sizeof(dp));
+    cout<<"len(LCS) of "<<s1<<" & "<<s2<<" : "
+    <<LCS_bottomUp(s1, s2, s1.length(), s2.length());
+
 
     
 }
