@@ -340,6 +340,7 @@ int coinChange2(int coins[], int n, int sum)
 *  - minm no. of insertions in a string to make it a palindrome
 */
 
+// !NOTE : Recursive part is must, for both top down and bottom up
 
 //* Recursive LCM(brute force)
 /*
@@ -387,3 +388,23 @@ int LCS_bottomUp(string s1, string s2, int n, int m)
 
 
 //* Top Down LCS
+
+
+
+// ?-------------------------------|MATRIX CHAIN MULTIPLICATION|--------------------------------------------------------------
+int mcm_recursive(int a[], int i, int j)
+{
+    if(i>=j) return 0;
+    int res = INT_MAX;
+    for(int k=i; k<j; k++)
+    {
+        int temp = mcm_recursive(a, i, k) + mcm_recursive(a, k+1, j) + a[i]*a[k]*a[j];
+        res = min(res, temp);
+    }
+    return res;
+}
+
+int mcm_bottom_up(int a[], int i, int j)
+{
+    
+}
