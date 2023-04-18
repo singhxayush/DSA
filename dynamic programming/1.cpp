@@ -84,6 +84,9 @@ int main()
     ////? MCM (Recursive)
     int a[5] = {4, 2, 6, 7, 3};
     int i=0, j=4;
-    cout<<mcm_recursive(a, i, j);
-    
+    // pr(mcm_recursive(a, i, j));
+
+    memset(dp, -1, sizeof(dp));
+    pr(mcm_bottom_up(a, i, j));
+    displaydp(10, 10);
 }

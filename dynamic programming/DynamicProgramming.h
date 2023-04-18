@@ -407,5 +407,13 @@ int mcm_recursive(int a[], int i, int j)
 
 int mcm_bottom_up(int a[], int i, int j)
 {
-    
+    if(i>=j) return 0;
+    if(dp[i][j]!=-1) return dp[i][j];
+    int res = INT_MAX;
+    for(int k=i; k<j; k++)
+    {
+        int temp = mcm_bottom_up(a, i, k) + mcm_bottom_up(a, k+1, j) + a[i]*a[k]*a[j];
+        res = min(res, temp);
+    }
+    return dp[i][j] = res;
 }
