@@ -33,8 +33,6 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-  "files.associations": {
-    "ostream": "cpp"
-  },
-  "workbench.colorTheme": "Dark C++ Theme"
+  "C_Cpp_Runner.useAddressSanitizer": false,
+  "workbench.colorTheme": "Monokai Vibrant"
 }
