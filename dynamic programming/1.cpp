@@ -4,10 +4,10 @@ int main()
 {
     //*------------------|Knapsack|------------------
 
-    int n = 7;
-    int w = 9;
-    int wt[n] = {3, 1, 7, 4, 2, 8, 6};
-    int val[n] = {1, 4, 9, 3, 10, 4, 6};
+    // int n = 7;
+    // int w = 9;
+    // int wt[n] = {3, 1, 7, 4, 2, 8, 6};
+    // int val[n] = {1, 4, 9, 3, 10, 4, 6};
 
     ////? Normal recursive Knapsack - Brute force
     // cout<<knapsack_recursive(wt, val, w, n)<<"\n";
@@ -60,21 +60,30 @@ int main()
 
     //*-----------------------|L C S|-----------------------
     
-    //? LCS RECURSVE
-    string s1 = "abcdgh";
-    string s2 = "abedfhr";
+    ////? LCS RECURSVE
+    // string s1 = "abcdgh";
+    // string s2 = "abedfhr";
 
     // s1 = "abcde";
     // s2 = "pqrsc";
+
+    // s1 = "abcdaf";
+    // s2 = "acbcf";
 
     // cout<<"len(LCS) of "<<s1<<" & "<<s2<<" : "
     // <<LCS_recursive(s1, s2, s1.length(), s2.length());
 
     ////? LCS Bottom Up(Memoization)
-    memset(dp, -1, sizeof(dp));
-    cout<<"len(LCS) of "<<s1<<" & "<<s2<<" : "
-    <<LCS_bottomUp(s1, s2, s1.length(), s2.length());
+    // memset(dp, -1, sizeof(dp));
+    // cout<<"len(LCS) of "<<s1<<" & "<<s2<<" : "
+    // <<LCS_bottomUp(s1, s2, s1.length(), s2.length());
 
 
+
+
+    ////? MCM (Recursive)
+    int a[5] = {4, 2, 6, 7, 3};
+    int i=0, j=4;
+    cout<<mcm_recursive(a, i, j);
     
 }

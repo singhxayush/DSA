@@ -15,6 +15,7 @@ void displaydp(int n, int w)
     cout<<"n : "<<n<<" | ";
     cout<<"W : "<<w<<"\n\n";
 
+
     for(int j=0; j<=w; j++) cout<<"\t"<<j; cout<<"\n\n";
 
     for(int i=0; i<=n; i++)
