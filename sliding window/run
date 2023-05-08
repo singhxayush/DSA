@@ -1,0 +1,21 @@
+#!/bin/bash
+read -r file_name
+print_banner() {
+    clear
+    gum style \
+    --border rounded  \
+    --bold \
+    --border-foreground="#ff3399" \
+    --width=3 \
+    --padding="0 3" \
+"
+Console OP : $file_name
+"
+}
+print_banner
+
+
+g++ "$file_name"
+./a.out < ip.txt
+# ./a.out < ip.txt > op.txt && code op.txt
+exit
