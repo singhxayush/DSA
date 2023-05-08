@@ -1,0 +1,7 @@
+#!/bin/bash
+clear
+read -r file_name
+g++ "$file_name"
+./a.out < ip.txt
+# ./a.out < ip.txt > op.txt && code op.txt
+exit

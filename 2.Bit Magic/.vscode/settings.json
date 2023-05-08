@@ -22,5 +22,14 @@
     "cmath": "cpp",
     "complex": "cpp",
     "ostream": "cpp"
-  }
+  },
+  "C_Cpp_Runner.msvcBatchPath": "",
+  "C_Cpp_Runner.useMsvc": false,
+  "C_Cpp_Runner.includeSearch": [
+    "*",
+    "**/*"
+  ],
+  "C_Cpp_Runner.useAddressSanitizer": false,
+  "C_Cpp_Runner.showCompilationTime": false,
+  "workbench.colorTheme": "Monokai GRS"
 }

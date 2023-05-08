@@ -7,13 +7,11 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "/media/ayush/programming/dsa/2.Bit Magic",
-      "environment": [],
-      "program": "/media/ayush/programming/dsa/2.Bit Magic/build/Debug/outDebug",
-      "internalConsoleOptions": "openOnSessionStart",
+      "externalConsole": false,
+      "cwd": "/home/ayush/programming/DSA/2.Bit Magic",
+      "program": "/home/ayush/programming/DSA/2.Bit Magic/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",
-      "externalConsole": false,
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
