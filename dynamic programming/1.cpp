@@ -82,11 +82,19 @@ int main()
 
 
     ////? MCM (Recursive)
-    int a[5] = {4, 2, 6, 7, 3};
-    int i=0, j=4;
+    // int a[5] = {4, 2, 6, 7, 3};
+    // int i=0, j=4;
     // pr(mcm_recursive(a, i, j));
 
+    // memset(dp, -1, sizeof(dp));
+    // pr(mcm_bottom_up(a, i, j));
+    // displaydp(10, 10);
+
+
+    string s = "nitik";
+    int i = 0, j = s.length()-1;
+    // pr(palindromic_part_recursive(s, i, j));
+
     memset(dp, -1, sizeof(dp));
-    pr(mcm_bottom_up(a, i, j));
-    displaydp(10, 10);
+    pr(palindromic_part_memoization(s, i, j));
 }

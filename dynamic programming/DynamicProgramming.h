@@ -417,3 +417,64 @@ int mcm_bottom_up(int a[], int i, int j)
     }
     return dp[i][j] = res;
 }
+
+
+//* Palindrome String partitioning
+/* 
+  for ex : nitik
+  palindromic partions(min) = {n, iti, n}
+  palindromic partions(max) = {n, i, t, i, n}
+
+  problem statement : to find such min "number of partitions"
+*/
+bool is_palindrome(string s, int i, int j)
+{
+    if(i==j) return true;
+    if(i>j) return true;
+    while(i>j)
+    {
+        if(s[i]!=s[j]) return false;
+        i++, j--;
+    }
+    return true;
+}
+int palindromic_part_recursive(string s, int i, int j)
+{
+    if(i>=j) return 0;
+    if(is_palindrome(s, i, j)) return 0;
+
+    int res = INT_MAX;
+
+    for(int k=i; k<j; k++)
+    {
+        int temp = 1 + palindromic_part_recursive(s, i, k) + palindromic_part_recursive(s, k+1, j);
+        res = min(res, temp);
+    }
+
+    return res;
+}
+
+
+int palindromic_part_memoization(string s, int i, int j)
+{
+    if(i>=j) return 0;
+    if(is_palindrome(s, i, j)) return 0;
+    if(dp[i][j] != -1) return dp[i][j];
+    
+    int res = INT_MAX;
+    for(int k=i; k<j; k++)
+    {
+        int temp = 1 + palindromic_part_memoization(s, i, k) + palindromic_part_memoization(s, k+1, j);
+        res = max(res, temp);
+    }
+
+    return dp[i][j] = res;
+}
+
+int palindromic_part_memoization2(string s, int i, int k)
+{
+    
+}
+
+
+//* Evaluate expression to TRUE | Boolean parenthesis
