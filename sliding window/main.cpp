@@ -9,9 +9,16 @@ int main()
 
 
     //? First Negative Number in every Window of Size K
-    // if not present print 0
-    int a[] = {1, -1, 2, -4, 3, -2, 9, 8, 4, -3, 2, -1};
-    int n = sz(a);
-    int k = 4;
-    First_Negative_Number_in_every_Window_of_Size_K(n, a, k);
+    //? if not present print 0
+    // int a[] = {1, -1, 2, -4, 3, -2, 9, 8, 4, -3, 2, -1};
+    // int n = sz(a);
+    // int k = 4;
+    // First_Negative_Number_in_every_Window_of_Size_K(n, a, k);
+
+
+    //? Count Occurrences Of Anagrams in
+    //? A given string s and a given anagram pattern to follow
+    string s = "cxyzjpyxzzozyxyzopxqyz";
+    string a = "xyz";
+    cout<<Count_Occurrences_Of_Anagrams(s, a);
 }

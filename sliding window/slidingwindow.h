@@ -6,6 +6,8 @@ using namespace std;
 #define pr2(x, y) cout<<x<<' '<<y<<endl;
 #define pr3(x, y, z) cout<<x<<' '<<y<<' '<<z<<endl;
 
+// -----------------------------------------------------------------------------------------
+
 /*
 !    Slding Window
 *    1. fixed size window
@@ -28,6 +30,8 @@ using namespace std;
 *    5. Min window substring
 */
 
+// -----------------------------------------------------------------------------------------
+
 int Maximum_Sum_Subarray_of_size_K(int n, int a[], int k)
 {
     int res = INT_MIN, s = 0, l = 0, r = 0;
@@ -45,6 +49,8 @@ int Maximum_Sum_Subarray_of_size_K(int n, int a[], int k)
     res = max(res, s);
     return res;
 }
+
+// -----------------------------------------------------------------------------------------
 
 void First_Negative_Number_in_every_Window_of_Size_K(int n, int a[], int k)
 {
@@ -71,7 +77,31 @@ void First_Negative_Number_in_every_Window_of_Size_K(int n, int a[], int k)
     }
 }
 
-int Count_Occurrences_Of_Anagrams(int n, int a[], int k)
+// -----------------------------------------------------------------------------------------
+
+int Count_Occurrences_Of_Anagrams(string s, string a) // s->given string | a->anagram
 {
-    
+    int k = a.length();
+    int res = 0;
+    unordered_map<int, int> m;
+    for(int i=0; i<k; i++) m[a[i]]++;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    \
 }
