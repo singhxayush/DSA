@@ -392,16 +392,25 @@ int LCS_bottomUp(string s1, string s2, int n, int m)
 
 
 
-// ?-------------------------------|MATRIX CHAIN MULTIPLICATION|--------------------------------------------------------------
-int mcm_recursive(int a[], int i, int j)
+// ?------------------------------------|MATRIX CHAIN MULTIPLICATION|--------------------------------------------------------------
+
+int mcm_recursive(int a[], int l, int r)
 {
-    if(i>=j) return 0;
     int res = INT_MAX;
-    for(int k=i; k<j; k++)
+
+    // base condition
+    if(l >= r) return 0;
+
+    // move k from l -> r-1
+    for(int k=l; k<=r-1; k++)
     {
-        int temp = mcm_recursive(a, i, k) + mcm_recursive(a, k+1, j) + a[i]*a[k]*a[j];
-        res = min(res, temp);
+        int temp_res = mcm_recursive(a, l, k) 
+        + mcm_recursive(a, k+1, r) 
+        + a[l]*a[k]*a[r];
+
+        res = min(temp_res, res);
     }
+
     return res;
 }
 
@@ -473,7 +482,7 @@ int palindromic_part_memoization(string s, int i, int j)
 
 int palindromic_part_memoization2(string s, int i, int k)
 {
-    
+
 }
 
 

@@ -43,11 +43,11 @@ int main()
     //*----------------|Unbounded Knapsack|----------------
 
     ////? Rod cutting and coin change problem
-    // int L = 11, n =  5;
-    // int len[n] = {1, 3, 5, 7, 8};
-    // int price[n] = {2, 6, 3, 4, 6};
-    // cout<<knapsack_dp_bottomup(len, price, L, n); 
-    // cout<<maxProfit_by_CuttingRods(len, price, n, L)<<"\n";
+    int L = 11, n =  5;
+    int len[n] = {1, 3, 5, 7, 8};
+    int price[n] = {2, 6, 3, 4, 6};
+    cout<<knapsack_dp_bottomup(len, price, L, n); 
+    cout<<maxProfit_by_CuttingRods(len, price, n, L)<<"\n";
 
     // int coins[6] = {2, 4, 8, 5, 1, 9};
     // sort(coins, coins+6);
@@ -58,7 +58,7 @@ int main()
 
 
 
-    //*-----------------------|L C S|-----------------------
+//*-----------------------|L C S|-----------------------
     
     ////? LCS RECURSVE
     // string s1 = "abcdgh";
@@ -81,20 +81,21 @@ int main()
 
 
 
+//*-----------------------|M C M|-----------------------
+
     ////? MCM (Recursive)
-    // int a[5] = {4, 2, 6, 7, 3};
-    // int i=0, j=4;
-    // pr(mcm_recursive(a, i, j));
+    int a[5] = {4, 2, 6, 7, 3};
+    int l=0, r=sz(a)-1;
+    pr(mcm_recursive(a, l, r));
 
     // memset(dp, -1, sizeof(dp));
     // pr(mcm_bottom_up(a, i, j));
     // displaydp(10, 10);
 
 
-    string s = "nitik";
-    int i = 0, j = s.length()-1;
+    // string s = "nitik";
+    // int i = 0, j = s.length()-1;
     // pr(palindromic_part_recursive(s, i, j));
-
-    memset(dp, -1, sizeof(dp));
-    pr(palindromic_part_memoization(s, i, j));
+    // memset(dp, -1, sizeof(dp));
+    // pr(palindromic_part_memoization(s, i, j));
 }
