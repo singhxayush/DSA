@@ -625,3 +625,75 @@ int est(string s, int l, int r, char isTrue)
     // memoization
     return mp[{l, r}] = res;
 }
+
+
+// ?------------------------------------|SCRAMBLE STRING|--------------------------------------------------------------
+bool scramble_string(string a, string b)
+{
+    // Base conditions
+    if(a == b) return 1;
+    if(a.length() <= 1) return 0;
+
+    int n = a.length();
+    bool res = false;
+
+    // Interate k form i = 1, i = n-1
+    for(int i=1; i<=n-1; i++)
+    {
+        if(
+            scramble_string(a.substr(0, i), b.substr(n-i, i)) &&
+            scramble_string(a.substr(i, n-i), b.substr(0, n-i))
+        ){
+            res = true;
+            break;
+        }
+
+        if(
+            scramble_string(a.substr(0, i), b.substr(0, i)) &&
+            scramble_string(a.substr(i, n-i), b.substr(i, n-i))
+        ){
+            res = true;
+            break;
+        }
+    }
+
+    return res;
+}
+
+map<pair<string, string>, bool> mp1;
+bool scramble_string_BottomUp(string a, string b)
+{
+    // Base conditions
+    if(a == b) return 1;
+    if(a.length() <= 1) return 0;
+
+
+    // DP
+    if(mp1.find({a, b}) != mp1.end()) return 1;
+
+    int n = a.length();
+    bool res = false;
+
+    // Interate k form i = 1, i = n-1
+    for(int i=1; i<=n-1; i++)
+    {
+        if(
+            scramble_string_BottomUp(a.substr(0, i), b.substr(n-i, i)) &&
+            scramble_string_BottomUp(a.substr(i, n-i), b.substr(0, n-i))
+        ){
+            res = true;
+            break;
+        }
+
+        if(
+            scramble_string_BottomUp(a.substr(0, i), b.substr(0, i)) &&
+            scramble_string_BottomUp(a.substr(i, n-i), b.substr(i, n-i))
+        ){
+            res = true;
+            break;
+        }
+    }
+
+    // memoization
+    return mp1[{a, b}] = res;
+}

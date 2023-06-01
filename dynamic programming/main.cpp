@@ -113,13 +113,31 @@ int main()
 
 
     //*-----------------------|E S T|-----------------------
+
     // string s = "T^F&F^T|F";
     // int l = 0, r = s.length()-1;
 
     ////? EST (Recursive)
     // pr(est_recusive(s, l, r, 'T'));
 
-    ////? EST (Bottom up & Optimised)
+    ////? EST (Bottom up)
     // pr(est(s, l, r, 'T'));
     // for(auto x : mp) cout<<x.first.first<<" "<<x.first.second<<" - "<<x.second<<"\n";
+
+
+    //*-----------------------|Scr str|-----------------------
+    string a = "great";
+    string b = "rgate";
+    // string b = "rgtae";
+    // string b = "aetrg";
+    // string b = "arteg";
+    // string b = "rartg";
+
+    ////? SrcStr (Recursive)
+    // if(scramble_string(a, b)) cout<<"Scrambled\n";
+    // else cout<<"Not Scrambled\n";
+
+    ////? SrcStr (Bottom)
+    if(scramble_string_BottomUp(a, b)) cout<<"Scrambled\n";
+    else cout<<"Not Scrambled\n";
 }
