@@ -9,9 +9,10 @@ using namespace std;
 
 // *DP matrix for Memoization 
 int static dp[1000][1000];
-
+int counter = 0;
 void displaydp(int n, int w)
 {
+    cout<<"\n";
     cout<<"n : "<<n<<" | ";
     cout<<"W : "<<w<<"\n\n";
 
@@ -406,7 +407,7 @@ int mcm_recursive(int a[], int l, int r)
     {
         int temp_res = mcm_recursive(a, l, k) 
         + mcm_recursive(a, k+1, r) 
-        + a[l]*a[k]*a[r];
+        + a[l-1]*a[k]*a[r];
 
         res = min(temp_res, res);
     }
@@ -414,76 +415,112 @@ int mcm_recursive(int a[], int l, int r)
     return res;
 }
 
-int mcm_bottom_up(int a[], int i, int j)
+int mcm(int a[], int l, int r)
 {
-    if(i>=j) return 0;
-    if(dp[i][j]!=-1) return dp[i][j];
     int res = INT_MAX;
-    for(int k=i; k<j; k++)
+
+    // base condtion
+    if(l >= r) return 0;
+
+    // return DP
+    if(dp[l][r] != -1) return dp[l][r];
+
+    // move k from l to r-1
+    for(int k=l; k<=r-1; k++)
     {
-        int temp = mcm_bottom_up(a, i, k) + mcm_bottom_up(a, k+1, j) + a[i]*a[k]*a[j];
-        res = min(res, temp);
+        int temp_res = mcm(a, l, k) + mcm(a, k+1, r) + a[l-1]*a[k]*a[r];
+        res = min(res, temp_res);
     }
-    return dp[i][j] = res;
+
+    // memoization
+    return dp[l][r] = res;
 }
 
 
-//* Palindrome String partitioning
+// ?------------------------------------|PALINDROME STRING PARTITIONING|--------------------------------------------------------------
 /* 
   for ex : nitik
-  palindromic partions(min) = {n, iti, n}
-  palindromic partions(max) = {n, i, t, i, n}
-
+  palindromic partions(min) = {n, iti, k}
+  palindromic partions(max) = {n, i, t, i, k}
   problem statement : to find such min "number of partitions"
 */
-bool is_palindrome(string s, int i, int j)
+bool isPalindrome(string s, int l, int r)
 {
-    if(i==j) return true;
-    if(i>j) return true;
-    while(i>j)
-    {
-        if(s[i]!=s[j]) return false;
-        i++, j--;
-    }
+    while(l <= r) if(s[l++] != s[r--]) return false;
     return true;
 }
-int palindromic_part_recursive(string s, int i, int j)
-{
-    if(i>=j) return 0;
-    if(is_palindrome(s, i, j)) return 0;
 
+int psp_recursive(string s, int l, int r)
+{
     int res = INT_MAX;
 
-    for(int k=i; k<j; k++)
+    // Base condition 1
+    if(l > r) return 0;
+    // Base condition 2
+    if(isPalindrome(s, l, r)) return 0;
+
+    // move k from l to r-1
+    for(int k=l; k<=r-1; k++)
     {
-        int temp = 1 + palindromic_part_recursive(s, i, k) + palindromic_part_recursive(s, k+1, j);
+        int temp = 1 + psp_recursive(s, l, k) + psp_recursive(s, k+1, r);
         res = min(res, temp);
+        // cout<<l<<" "<<r<<" "<<res<<"\n";
     }
 
     return res;
 }
 
-
-int palindromic_part_memoization(string s, int i, int j)
+int psp(string s, int l, int r)
 {
-    if(i>=j) return 0;
-    if(is_palindrome(s, i, j)) return 0;
-    if(dp[i][j] != -1) return dp[i][j];
-    
     int res = INT_MAX;
-    for(int k=i; k<j; k++)
+
+    // Base condition 1
+    if(l > r) return 0;
+    // Base condition 2
+    if(isPalindrome(s, l, r)) return 0;
+    // Base conditon DP
+    if(dp[l][r] != -1) return dp[l][r];
+
+    // move k from l to r-1
+    for(int k=l; k<=r-1; k++)
     {
-        int temp = 1 + palindromic_part_memoization(s, i, k) + palindromic_part_memoization(s, k+1, j);
-        res = max(res, temp);
+        int temp = 1 + psp(s, l, k) + psp(s, k+1, r);
+        res = min(res, temp);
+        // cout<<l<<" "<<r<<" "<<res<<"\n";
     }
 
-    return dp[i][j] = res;
+    // memoization
+    return dp[l][r] = res;
 }
 
-int palindromic_part_memoization2(string s, int i, int k)
+// psp more optimised
+int pspOptimised(string s, int l, int r)
 {
+    int res = INT_MAX;
 
+    // Base condition 1
+    if(l > r) return 0;
+    // Base condition 2
+    if(isPalindrome(s, l, r)) return 0;
+    // Base conditon DP
+    if(dp[l][r] != -1) return dp[l][r];
+
+    // move k from l to r-1
+    for(int k=l; k<=r-1; k++)
+    {
+        int left, right;
+
+        if(dp[l][r] != -1) left = dp[l][r];
+        else left = pspOptimised(s, l, k);
+
+        if(dp[l][r] != -1) right = dp[l][r];
+        else right = pspOptimised(s, k+1, r);
+
+        int temp = 1 + left + right;
+        res = min(res, temp);
+        // cout<<l<<" "<<r<<" "<<res<<"\n";
+    }
+
+    // memoization
+    return dp[l][r] = res;
 }
-
-
-//* Evaluate expression to TRUE | Boolean parenthesis
