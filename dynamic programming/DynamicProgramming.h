@@ -524,3 +524,104 @@ int pspOptimised(string s, int l, int r)
     // memoization
     return dp[l][r] = res;
 }
+
+
+// ?------------------------------------|BOOLEAN PARENTHESIS|--------------------------------------------------------------
+/*
+  EVALUATE EXPRESSION TO TRUE (EST)
+
+  given an expression in a string with T & F as char represting true and false resp.
+  and in between every char a biwise symbol |, ^, &
+
+  find the number of ways of placing parenthesis in the expression
+  to evaluate the whole expression to true
+*/
+int est_recusive(string s, int l, int r, char isTrue)
+{
+    int res = 0;
+
+    // Base condition 1
+    if(l > r) return 0;
+    // Base condition 2
+    if(l == r)
+    {
+        if(isTrue == s[l]) return 1;
+        else return 0;
+    }
+
+    // loop k from l to r-1
+    for(int k=l; k<=r-1; k++)
+    {
+        int lT, lF, rT, rF;
+
+        lT = est_recusive(s, l, k-1, 'T');
+        lF = est_recusive(s, l, k-1, 'F');
+        rT = est_recusive(s, k+1, r, 'T');
+        rF = est_recusive(s, k+1, r, 'F');
+
+        if(s[k] == '&')
+        {
+            if(isTrue == 'T') res += lT*rT;
+            else res += lF*rT + lT*rF + lF*rF;
+        }
+        else if(s[k] == '|')
+        {
+            if(isTrue == 'T') res += lF*rT + lT*rF + lT*rT;
+            else res += lF*rF;
+        }
+        else if(s[k] == '^')
+        {
+            if(isTrue == 'T') res += lF*rT + lT*rF;
+            else res += lT*rT + lF*rF;
+        }
+    }
+    return res;
+}
+
+map<pair<int, int>, int> mp;
+int est(string s, int l, int r, char isTrue)
+{
+    int res = 0;
+
+    // Base condition 1
+    if(l > r) return 0;
+    // Base condition 2
+    if(l == r)
+    {
+        if(isTrue == s[l]) return 1;
+        else return 0;
+    }
+    // Base condition DP
+    if(mp.find({l, r}) != mp.end()) return mp[{l, r}];
+
+
+    // loop k from l to r-1
+    for(int k=l; k<=r-1; k++)
+    {
+        int lT, lF, rT, rF;
+
+        lT = est_recusive(s, l, k-1, 'T');
+        lF = est_recusive(s, l, k-1, 'F');
+        rT = est_recusive(s, k+1, r, 'T');
+        rF = est_recusive(s, k+1, r, 'F');
+
+        if(s[k] == '&')
+        {
+            if(isTrue == 'T') res += lT*rT;
+            else res += lF*rT + lT*rF + lF*rF;
+        }
+        else if(s[k] == '|')
+        {
+            if(isTrue == 'T') res += lF*rT + lT*rF + lT*rT;
+            else res += lF*rF;
+        }
+        else if(s[k] == '^')
+        {
+            if(isTrue == 'T') res += lF*rT + lT*rF;
+            else res += lT*rT + lF*rF;
+        }
+    }
+
+    // memoization
+    return mp[{l, r}] = res;
+}

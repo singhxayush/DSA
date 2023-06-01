@@ -110,4 +110,16 @@ int main()
     // pr(pspOptimised(s, l, r));
     // displaydp(6, 6);
     // pr(counter);
+
+
+    //*-----------------------|E S T|-----------------------
+    // string s = "T^F&F^T|F";
+    // int l = 0, r = s.length()-1;
+
+    ////? EST (Recursive)
+    // pr(est_recusive(s, l, r, 'T'));
+
+    ////? EST (Bottom up & Optimised)
+    // pr(est(s, l, r, 'T'));
+    // for(auto x : mp) cout<<x.first.first<<" "<<x.first.second<<" - "<<x.second<<"\n";
 }
