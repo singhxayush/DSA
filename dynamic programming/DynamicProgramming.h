@@ -697,3 +697,36 @@ bool scramble_string_BottomUp(string a, string b)
     // memoization
     return mp1[{a, b}] = res;
 }
+
+// ?------------------------------------|EGG DROPPING PROBLEM|--------------------------------------------------------------
+int edp_recursive(int e, int f)
+{
+    if(f <= 1) return f;
+    if(e == 1) return f;
+
+    int res = INT_MAX;
+
+    for(int k = 1; k <= f; k++)
+    {
+        int temp = 1 + max(edp_recursive(e-1, k-1), edp_recursive(e, f-k));
+        int res = min(res, temp);
+    }
+
+    return res;
+}
+
+int edp_BottomUp(int e, int f)
+{
+    if(f <= 1) return f;
+    if(e == 1) return f;
+    if(dp[e][f] != -1) return dp[e][f];
+    int res = INT_MAX;
+
+    for(int k = 1; k <= f; k++)
+    {
+        int temp = 1 + max(edp_recursive(e-1, k-1), edp_recursive(e, f-k));
+        int res = min(res, temp);
+    }
+
+    return dp[e][f] = res;
+}

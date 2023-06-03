@@ -2,8 +2,7 @@
 
 int main()
 {
-    //*------------------|Knapsack|------------------
-
+//*------------------|Knapsack|------------------
     // int n = 7;
     // int w = 9;
     // int wt[n] = {3, 1, 7, 4, 2, 8, 6};
@@ -40,8 +39,7 @@ int main()
 
 
 
-    //*----------------|Unbounded Knapsack|----------------
-
+//*----------------|Unbounded Knapsack|----------------
     ////? Rod cutting and coin change problem
     // int L = 11, n =  5;
     // int len[n] = {1, 3, 5, 7, 8};
@@ -59,7 +57,6 @@ int main()
 
 
 //*-----------------------|L C S|-----------------------
-    
     ////? LCS RECURSVE
     // string s1 = "abcdgh";
     // string s2 = "abedfhr";
@@ -82,7 +79,6 @@ int main()
 
 
 //*-----------------------|M C M|-----------------------
-
     // int a[5] = {4, 2, 6, 7, 3};
     // int l=0, r=sz(a)-1;
 
@@ -97,7 +93,6 @@ int main()
 
 
 //*-----------------------|P S P|-----------------------
-
     // string s = "nitik";
     // int l = 0, r = s.length()-1;
 
@@ -112,8 +107,8 @@ int main()
     // pr(counter);
 
 
-    //*-----------------------|E S T|-----------------------
 
+//*-----------------------|E S T|-----------------------
     // string s = "T^F&F^T|F";
     // int l = 0, r = s.length()-1;
 
@@ -125,7 +120,8 @@ int main()
     // for(auto x : mp) cout<<x.first.first<<" "<<x.first.second<<" - "<<x.second<<"\n";
 
 
-    //*-----------------------|Scr str|-----------------------
+
+//*-----------------------|Scr str|-----------------------
     string a = "great";
     string b = "rgate";
     // string b = "rgtae";
@@ -138,6 +134,19 @@ int main()
     // else cout<<"Not Scrambled\n";
 
     ////? SrcStr (Bottom)
-    if(scramble_string_BottomUp(a, b)) cout<<"Scrambled\n";
-    else cout<<"Not Scrambled\n";
+    // if(scramble_string_BottomUp(a, b)) cout<<"Scrambled\n";
+    // else cout<<"Not Scrambled\n";
+
+
+
+//*-----------------------|E D P|-----------------------
+    int f = 3, e = 2;
+
+    ////? EDP (Recursive)
+    // pr(edp_recursive(e, f));
+
+    ////? EDP (Bottom Up)
+    memset(dp, -1, sizeof(dp));
+    pr(edp_BottomUp(e, f));
+    displaydp(f, f);
 }
