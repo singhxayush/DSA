@@ -730,3 +730,32 @@ int edp_BottomUp(int e, int f)
 
     return dp[e][f] = res;
 }
+
+// ?------------------------------------|DP ON TREE|--------------------------------------------------------------
+struct node
+{
+    int val;
+    node * l;
+    node * r;
+    node(int x)
+    {
+        val = x;
+        l = r = NULL;
+    }
+};
+
+typedef node * Node;
+
+int maxDiameter(Node root, int &res)
+{
+    if(root == NULL) return 0;
+
+    int l = maxDiameter(root->l, res);
+    int r = maxDiameter(root->r, res);
+
+    int temp = max(l, r) + 1;
+    int ans = max(temp, l+r+1);
+    res = max(res, ans);
+
+    return temp;
+}
