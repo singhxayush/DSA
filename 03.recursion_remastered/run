@@ -1,14 +1,28 @@
 #!/bin/bash
-echo " " > op.txt
+read -r file_name
+print_banner() {
+    clear
+    gum style \
+    --border rounded  \
+    --bold \
+    --border-foreground="#ff3399" \
+    --width=3 \
+    --padding="0 3" \
+"
+Console OP : $file_name
+"
+}
 
+print_banner
 
-read -r file_name < filename
-g++ "$file_name.cpp"
+g++ "$file_name"
+# console op
+./a.out < ip.txt
 
-./a.out > op.txt
-# ./chk >> op.txt
+# op.txt output
 
-# gedit op.txt
-# code op.txt
+# ./a.out < ip.txt > op.txt && code op.txt
 
-exit 0
+#debug mode
+# ./a.out < ip.txt > op.txt
+# ./dbg > debug.txt && code debug.txt
