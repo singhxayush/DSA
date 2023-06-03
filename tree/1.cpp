@@ -38,7 +38,7 @@ int main()
     // cout<<lca(root1, x, y)->val<<"\n";
     // childern_sum_update(root1); levelorder(root1);
 
-    distanceK(root1, p, 3);
+    // distanceK(root1, p, 3);
     // cout<<TimeToBurn(root1, p=);
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -93,6 +93,5 @@ int main()
     // string r5 = "7 5 5 1 2 2 1";
     // string r5 = "7 5 5 1 N N 1 N 2 2 N";
     // Node root5 = buildTree(r5); cout<<IsSymmetric(root5);
-
-
+    distanceK(root3, temp, 4);
 }
