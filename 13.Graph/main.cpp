@@ -38,7 +38,9 @@ int main()
     vertices.push_back({4, 5});
     vertices.push_back({7, 5});
 
-    int root = 1;
+    // int root = 1;
+    // int root = 6;
+    int root = 5;
     vector<int> bfs = BFS(n, vertices, root);
     for(auto x : bfs) cout<<x<<" "; cout<<"\n";
 }
