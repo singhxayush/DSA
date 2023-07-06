@@ -6,7 +6,11 @@ using namespace std;
 #define pr2(x, y) cout<<x<<' '<<y<<endl;
 #define pr3(x, y, z) cout<<x<<' '<<y<<' '<<z<<endl;
 
-//*--------------------------------------------------------------------------------------------
+
+bool visited[1000] = {0};
+
+
+//*------------------------------------------------------------------------------------------------------
 
 
 int G1[100][100];
@@ -39,6 +43,7 @@ void print_adj_matrix(int n)
 
 //*------------------------------------------------------------------------------------------------------
 
+
 vector<unordered_set<int>> G2;
 
 void storeGraph_arraylist(int n, vector<pair<int, int>> vertices, bool isDirected = false) //* n = number of nodes
@@ -61,16 +66,18 @@ void print_array_list(int n)
     for(int i=0; i<=n; i++) 
     {
         cout<<i<<" → ";
-        for(auto x : G2[i]) cout<<x<<" "; cout<<"\n";
+        if(G2[i].empty()) cout<<"NULL";
+        else for(auto x : G2[i]) cout<<x<<" "; cout<<"\n";
     }
     cout<<"\n";
 }
 
 //*------------------------------------------------------------------------------------------------------
 
+
 //? TRAVERSALS 
 
-// Breadth First Search (BFS)
+//* Breadth First Search (BFS) | T.C = O(N + 2E)
 vector<int> BFS(int n, vector<pair<int, int>> vertices, int root)
 {
     // Store the vertices in Array List G2
@@ -82,8 +89,7 @@ vector<int> BFS(int n, vector<pair<int, int>> vertices, int root)
     q.push(root);
 
     // Tracking Visited Nodes
-    bool vis[n+1] = {0};
-    vis[root] = 1;
+    visited[root] = 1;
 
     // Vector to store BFS result
     vector<int> res;
@@ -96,12 +102,131 @@ vector<int> BFS(int n, vector<pair<int, int>> vertices, int root)
 
         for(auto it : G2[node])
         {
-            if(!vis[it])
+            if(!visited[it])
             {
-                vis[it] = 1;
+                visited[it] = 1;
                 q.push(it);
             }
         }
     }
     return res;
+}
+
+
+//* Depth First Search (DFS)
+vector<int> DFS(int n, vector<pair<int, int>> vertices, int root)
+{
+    static vector<int> dfs;
+    dfs.push_back(root);
+    visited[root] = 1;
+
+    for(auto it : G2[root])
+    {
+        if(!visited[it])
+        {
+            DFS(n, vertices, it);
+        }
+    }
+
+    return dfs;
+}
+
+
+//*------------------------------------------------------------------------------------------------------
+
+//? Number of Provinces
+//! https://practice.geeksforgeeks.org/problems/number-of-provinces/1
+
+//? Number of Islands
+//! https://practice.geeksforgeeks.org/problems/find-the-number-of-islands/1
+
+//? Flood Fill Algo
+//! https://practice.geeksforgeeks.org/problems/flood-fill-algorithm1856/1
+
+//? Rotten Oranges
+//! https://practice.geeksforgeeks.org/problems/rotten-oranges2536/1k
+
+
+//*------------------------------------------------------------------------------------------------------
+
+
+//? Detect cycle in an undirected graph
+//! https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+
+bool isCycle(int n, vector<pair<int, int>> vertices, int root)
+{
+    // Store the vertices in Array List G2 (doesnt deal with components)
+    storeGraph_arraylist(n, vertices);
+    print_array_list(n);
+
+    // Store root node in the queue as {current node, parent node}
+    queue<pair<int, int>> q;
+    q.push({root, -1});
+
+    // Tracking root
+    visited[root] = 1;
+
+    while(!q.empty())
+    {
+        int curNode = q.front().first;
+        int parNode = q.front().second;
+        q.pop();
+
+        for(auto adjNode : G2[curNode])
+        {
+            if(!visited[adjNode])
+            {
+                visited[adjNode] = 1;
+                q.push({adjNode, curNode});
+            }
+            else if(parNode != adjNode)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+
+// for discrete components
+bool detect_cycle_in_a_component(int n, vector<pair<int, int>> vertices, int root)
+{
+    print_array_list(n);
+
+    queue<pair<int, int>> q;
+    q.push({root, -1});
+
+    visited[root] = 1;
+
+    while(!q.empty())
+    {
+        int curNode = q.front().first;
+        int parNode = q.front().second;
+        q.pop();
+
+        for(auto adjNode : G2[curNode])
+        {
+            if(!visited[adjNode])
+            {
+                visited[adjNode] = 1;
+                q.push({adjNode, curNode});
+            }
+            else if(parNode != adjNode)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+bool isCycle_with_components(int n, vector<pair<int, int>> vertices, int root)
+{
+    for(int i=1; i<=n; i++) 
+    if(!visited[i] && isCycle(n, vertices, root)) return true;
+    
+    return false;
 }
