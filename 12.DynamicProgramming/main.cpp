@@ -19,15 +19,17 @@ int main()
 
     ////? Iterative bottom Up knapsack
     // cout<<knapsack_dp_bottomup(wt, val, w, n)<<"\n";
-
+    // displaydp(n, w);
+ 
 
     ////? Subset Sum problems
     // int arr[7] = {3, 4, 3, 5, 2, 1, 7};
+    // cout<<subsetsum_topdown(arr, 7, 24)<<"\n"; displaydp(7, 24);
     // cout<<subsetsum(arr, 7, 24)<<"\n";
     // cout<<equal_partition(arr, 7)<<"\n";
     // cout<<numofSubsets(arr, 7, 20)<<"\n";
 
-    // int arr1[3] = {6, 7, 2};
+    int arr1[3] = {6, 7, 2};
     // cout<<minSubsetSumDiff(arr1, 3)<<"\n";
     // cout<<minSubsetSumDiff(arr, 7)<<"\n";
 
@@ -122,8 +124,8 @@ int main()
 
 
 //*-----------------------|Scr str|-----------------------
-    string a = "great";
-    string b = "rgate";
+    // string a = "great";
+    // string b = "rgate";
     // string b = "rgtae";
     // string b = "aetrg";
     // string b = "arteg";
@@ -140,13 +142,23 @@ int main()
 
 
 //*-----------------------|E D P|-----------------------
-    int f = 3, e = 2;
+    // int f = 3, e = 2;
 
     ////? EDP (Recursive)
     // pr(edp_recursive(e, f));
 
     ////? EDP (Bottom Up)
-    memset(dp, -1, sizeof(dp));
-    pr(edp_BottomUp(e, f));
-    displaydp(f, f);
+    // memset(dp, -1, sizeof(dp));
+    // pr(edp_BottomUp(e, f));
+    // displaydp(f, f);
+
+
+//*-----------------------|D O S|-----------------------
+    //? Best Time to Buy & Sell Stocks
+    
+    // vector<int> price{7, 1, 5, 3, 6, 4};
+    // cout<<maxiProfit(price);
+
+
+    
 }

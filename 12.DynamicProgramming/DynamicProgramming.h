@@ -30,7 +30,12 @@ void displaydp(int n, int w)
     }
     cout<<"\n";
 }
-// ?---------------------------------------|KNAPSACK & PROBLEMS|--------------------------------------------------------------
+// DP Patterns : https://leetcode.com/discuss/study-guide/458695/Dynamic-Programming-Patterns
+
+
+// ?-----------------------------------------|KNAPSACK |--------------------------------------------------------------
+
+// ALSO CAN REFER : https://leetcode.com/discuss/study-guide/1152328/01-Knapsack-Problem-and-Dynamic-Programming
 
 // ******* Normal recursive 0 - 1 Knapsack *******
 int knapsack_recursive(int wt[], int val[], int w, int n)
@@ -77,11 +82,27 @@ int knapsack_dp_bottomup(int wt[], int val[], int w, int n)
         if(wt[i-1] <= j) dp[i][j] = max(val[i-1]+dp[i-1][j-wt[i-1]], dp[i-1][j]);
         else dp[i][j] = dp[i-1][j];
     }
+
     return dp[n][w];
 }
 
 
 // ******* SubSet Sum Problem (subset = subseq) *******
+bool subsetsum_topdown(int a[], int n, int sum)
+{
+    // base
+    if (sum == 0) return 1;
+         
+    if (n == 0) return 0;
+
+    // return if present
+    if(dp[n][sum] != -1) return dp[n][sum];
+
+    // recursion
+    if(a[n-1] <= sum) return dp[n][sum-a[n]] = subsetsum_topdown(a, n-1, sum-a[n-1]) || subsetsum_topdown(a, n-1, sum);
+    else return dp[n][sum] = subsetsum_topdown(a, n-1, sum);
+}
+
 bool subsetsum(int a[], int n, int sum)
 {
     // initialize
@@ -102,6 +123,7 @@ bool subsetsum(int a[], int n, int sum)
     // return 
     return dp[n][sum];
 }
+
 
 // ******* Count number of subsets for a given subset sum *******
 int numofSubsets(int a[], int n, int sum)
@@ -163,7 +185,7 @@ int minSubsetSumDiff(int a[], int n)
     for(int i=0; i<=n; i++) dp[i][0] = 1;
     for(int j=1; j<=sum; j++) dp[0][j] = 0;
 
-    // Implementation
+    // Implementationhttps://leetcode.com/discuss/study-guide/458695/Dynamic-Programming-Patterns
     for(int i=1; i<=n; i++)
     for(int j=1; j<=sum; j++)
     {
@@ -250,11 +272,12 @@ int maxProfit_by_CuttingRods(int len[], int price[], int n, int L)
     // Implementation
     for(int i=1; i<=n; i++)
     for(int j=1; j<=L; j++)
-
-    if(len[i-1] <= j) 
-        dp[i][j] = max( price[i-1] + dp[i][j-len[i-1]], dp[i-1][j] );
-    else 
-        dp[i][j] = dp[i-1][j];
+    {
+        if(len[i-1] <= j) 
+            dp[i][j] = max( price[i-1] + dp[i][j-len[i-1]], dp[i-1][j] );
+        else 
+            dp[i][j] = dp[i-1][j];
+    }
 
     // display
     displaydp(n, L);
@@ -368,7 +391,7 @@ int LCS_recursive(string s1, string s2, int n, int m)
     if(s1[n-1] == s2[m-1]) return
         1 + LCS_recursive(s1, s2, n-1, m-1);
     else return
-        max( LCS_recursive(s1, s2, n, m-1), LCS_recursive(s1, s2, n-1, m) );
+        max( LCS_recursive(s1, s2,  n, m-1), LCS_recursive(s1, s2, n-1, m) );
 }
 
 
@@ -758,4 +781,25 @@ int maxDiameter(Node root, int &res)
     res = max(res, ans);
 
     return temp;
+}
+
+
+// ?------------------------------------|DP ON STOCKS|--------------------------------------------------------------
+
+//* Best Time to Buy & Sell Stocks
+
+int maxiProfit(vector<int> price)
+{
+    int n = price.size();
+    int res = 0;
+    int mini = price[0]; 
+    
+    for(auto x : price)
+    {
+        int cost = x - mini;
+        res = max(cost, res);
+        mini = min(mini, x);
+    }
+
+    return res;
 }
