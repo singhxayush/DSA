@@ -13,7 +13,7 @@ bool visited[1000] = {0};
 //*------------------------------------------------------------------------------------------------------
 
 
-int G1[100][100];
+int matrix[1000][1000];
 
 void storeGraph_adj(int n, vector<pair<int, int>> vertices, bool isDirected = false) //* n = number of nodes
 {
@@ -22,8 +22,8 @@ void storeGraph_adj(int n, vector<pair<int, int>> vertices, bool isDirected = fa
     {
         int u = vertices[i].first;
         int v = vertices[i].second;
-        G1[u][v] = 1;
-        if(!isDirected) G1[v][u] = 1;
+        matrix[u][v] = 1;
+        if(!isDirected) matrix[v][u] = 1;
     }
 }
 void print_adj_matrix(int n)
@@ -34,8 +34,8 @@ void print_adj_matrix(int n)
     {
         cout<<"["<<i<<"]\t";
         for(int j=0; j<=n; j++){
-            if(G1[i][j]) cout<<"|"<<G1[i][j]<<"|\t";
-            else cout<<" "<<G1[i][j]<<"\t";
+            if(matrix[i][j]) cout<<"|"<<matrix[i][j]<<"|\t";
+            else cout<<" "<<matrix[i][j]<<"\t";
         }
         cout<<"\n\n";
     }
@@ -44,7 +44,7 @@ void print_adj_matrix(int n)
 //*------------------------------------------------------------------------------------------------------
 
 
-vector<unordered_set<int>> G2;
+vector<unordered_set<int>> adjList;
 
 void storeGraph_arraylist(int n, vector<pair<int, int>> vertices, bool isDirected = false) //* n = number of nodes
 {
@@ -57,7 +57,7 @@ void storeGraph_arraylist(int n, vector<pair<int, int>> vertices, bool isDirecte
         temp[u].insert(v);
         if(!isDirected) temp[v].insert(u);
     }
-    G2 = temp;
+    adjList = temp;
     temp.clear();
 }
 void print_array_list(int n)
@@ -66,8 +66,8 @@ void print_array_list(int n)
     for(int i=0; i<=n; i++) 
     {
         cout<<i<<" → ";
-        if(G2[i].empty()) cout<<"NULL";
-        else for(auto x : G2[i]) cout<<x<<" "; cout<<"\n";
+        if(adjList[i].empty()) cout<<"NULL";
+        else for(auto x : adjList[i]) cout<<x<<" "; cout<<"\n";
     }
     cout<<"\n";
 }
@@ -80,7 +80,7 @@ void print_array_list(int n)
 //* Breadth First Search (BFS) | T.C = O(N + 2E)
 vector<int> BFS(int n, vector<pair<int, int>> vertices, int root)
 {
-    // Store the vertices in Array List G2
+    // Store the vertices in Array List adjList
     storeGraph_arraylist(n, vertices);
     print_array_list(n);
 
@@ -100,7 +100,7 @@ vector<int> BFS(int n, vector<pair<int, int>> vertices, int root)
         q.pop();
         res.push_back(node);
 
-        for(auto it : G2[node])
+        for(auto it : adjList[node])
         {
             if(!visited[it])
             {
@@ -120,7 +120,7 @@ vector<int> DFS(int n, vector<pair<int, int>> vertices, int root)
     dfs.push_back(root);
     visited[root] = 1;
 
-    for(auto it : G2[root])
+    for(auto it : adjList[root])
     {
         if(!visited[it])
         {
@@ -150,12 +150,12 @@ vector<int> DFS(int n, vector<pair<int, int>> vertices, int root)
 //*------------------------------------------------------------------------------------------------------
 
 
-//? Detect cycle in an undirected graph
+//? Detect cycle in an undirected graph (using BFS!)
 //! https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
 
-bool isCycle(int n, vector<pair<int, int>> vertices, int root)
+bool isCycle_bfs(int n, vector<pair<int, int>> vertices, int root = 1)
 {
-    // Store the vertices in Array List G2 (doesnt deal with components)
+    // Store the vertices in Array List adjList (doesnt deal with components)
     storeGraph_arraylist(n, vertices);
     print_array_list(n);
 
@@ -172,7 +172,7 @@ bool isCycle(int n, vector<pair<int, int>> vertices, int root)
         int parNode = q.front().second;
         q.pop();
 
-        for(auto adjNode : G2[curNode])
+        for(auto adjNode : adjList[curNode])
         {
             if(!visited[adjNode])
             {
@@ -190,14 +190,12 @@ bool isCycle(int n, vector<pair<int, int>> vertices, int root)
 }
 
 
-// for discrete components
+// for discrete components BFS
 bool detect_cycle_in_a_component(int n, vector<pair<int, int>> vertices, int root)
 {
-    print_array_list(n);
-
     queue<pair<int, int>> q;
-    q.push({root, -1});
 
+    q.push({root, -1});
     visited[root] = 1;
 
     while(!q.empty())
@@ -206,7 +204,7 @@ bool detect_cycle_in_a_component(int n, vector<pair<int, int>> vertices, int roo
         int parNode = q.front().second;
         q.pop();
 
-        for(auto adjNode : G2[curNode])
+        for(auto adjNode : adjList[curNode])
         {
             if(!visited[adjNode])
             {
@@ -222,11 +220,56 @@ bool detect_cycle_in_a_component(int n, vector<pair<int, int>> vertices, int roo
 
     return false;
 }
-
 bool isCycle_with_components(int n, vector<pair<int, int>> vertices, int root)
 {
+    storeGraph_arraylist(n, vertices);
+    print_array_list(n);
+
     for(int i=1; i<=n; i++) 
-    if(!visited[i] && isCycle(n, vertices, root)) return true;
+    if(!visited[i] && isCycle_bfs(n, vertices, root)) return true;
     
     return false;
 }
+
+
+//? Detect cycle in an undirected graph (using DFS!)
+bool isCycle_dfs_solve(int node, int parent)
+{
+    visited[node] = 1;
+
+    for(auto adjNode : adjList[node])
+    {
+        if(!visited[adjNode])
+        {
+            if(isCycle_dfs_solve(adjNode, node)) return 1;
+        }
+        else if(adjNode != parent) return 1;
+    }
+
+    return 0;
+}
+bool isCycle_dfs(int n, vector<pair<int, int>> vertices)
+{
+    storeGraph_arraylist(n, vertices);
+    print_array_list(n);
+
+    for(int i=1; i<=n; i++)
+    {
+        if(!visited[i]){
+            if(isCycle_dfs_solve(i, -1)) return 1;
+        }
+    }
+
+    return 0;
+}
+
+
+//*------------------------------------------------------------------------------------------------------
+
+//? Distance of Nearest cell having 1
+//! https://practice.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1
+//! https://leetcode.com/problems/01-matrix/
+
+
+
+//*------------------------------------------------------------------------------------------------------

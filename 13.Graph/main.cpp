@@ -1,4 +1,4 @@
-#include"graph.h"
+#include "graph.h"
 
 int main()
 {
@@ -81,13 +81,10 @@ int main()
     vertices.push_back({6, 3});
     vertices.push_back({3, 4});
 
-    // BFS to Detect cycle
-    if(isCycle(n, vertices, 1)) cout<<"Cycle Present\n";
-    else cout<<"No Cycle\n";
+    // *BFS to Detect cycle
+    // if(isCycle_bfs(n, vertices)) cout<<"Cycle\n"; else cout<<"No Cycle\n";
 
-
-
-
-
+    // *DFS to Detect cycle
+    if(isCycle_dfs(n, vertices)) cout<<"Cycle\n"; else cout<<"No Cycle\n";
 
 }
