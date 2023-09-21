@@ -33,8 +33,7 @@ void displaydp(int n, int w)
 // DP Patterns : https://leetcode.com/discuss/study-guide/458695/Dynamic-Programming-Patterns
 
 
-// ?-----------------------------------------|KNAPSACK |--------------------------------------------------------------
-
+// ?-----------------------------------------|KNAPSACK|--------------------------------------------------------------
 // ALSO CAN REFER : https://leetcode.com/discuss/study-guide/1152328/01-Knapsack-Problem-and-Dynamic-Programming
 
 // ******* Normal recursive 0 - 1 Knapsack *******
@@ -85,7 +84,6 @@ int knapsack_dp_bottomup(int wt[], int val[], int w, int n)
 
     return dp[n][w];
 }
-
 
 // ******* SubSet Sum Problem (subset = subseq) *******
 bool subsetsum_topdown(int a[], int n, int sum)
@@ -185,7 +183,7 @@ int minSubsetSumDiff(int a[], int n)
     for(int i=0; i<=n; i++) dp[i][0] = 1;
     for(int j=1; j<=sum; j++) dp[0][j] = 0;
 
-    // Implementationhttps://leetcode.com/discuss/study-guide/458695/Dynamic-Programming-Patterns
+    // Implementation
     for(int i=1; i<=n; i++)
     for(int j=1; j<=sum; j++)
     {
@@ -413,7 +411,22 @@ int LCS_bottomUp(string s1, string s2, int n, int m)
 
 
 //* Top Down LCS
-
+int LCS_topDown(string s1, string s2, int n, int m)
+{
+    memset(dp, -1, sizeof(dp));
+    
+    for(int i=0; i<=n; i++) dp[i][0] = 0;
+    for(int j=0; j<=m; j++) dp[0][j] = 0;
+    
+    for(int i=1; i<=n; i++)
+    for(int j=1; j<=m; j++)
+    {
+        if(s1[i-1] == s2[j-1]) dp[i][j] = 1 + dp[i-1][j-1];
+        else dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+    }
+    
+    return dp[n][m];
+}
 
 
 // ?------------------------------------|MATRIX CHAIN MULTIPLICATION|--------------------------------------------------------------
@@ -803,3 +816,4 @@ int maxiProfit(vector<int> price)
 
     return res;
 }
+
