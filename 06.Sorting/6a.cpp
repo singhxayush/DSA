@@ -1,4 +1,4 @@
-///// PARTITIONS : LOMUTO (unstable) /////
+/// PARTITIONS : LOMUTO (unstable) ///
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -17,7 +17,7 @@ int partition(int a[], int l, int h){
         // for(int k=0; k<=h; k++) cout<<a[k]<<" "; cout<<endl; // uncomment this line to understand better
     }
     swap(a[i+1], a[h]);
-    // for(int k=0; k<=h; k++) cout<<a[k]<<" "; cout<<endl; // uncomment this line to understand better
+    // for(int k=0; k<=h; k+q+) cout<<a[k]<<" "; cout<<endl; // uncomment this line to understand better
 
     return (i+1);
 }
